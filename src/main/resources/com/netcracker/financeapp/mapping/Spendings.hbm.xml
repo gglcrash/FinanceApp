@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 11, 2017 12:29:32 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.netcracker.financeapp.mapping.Spendings" table="spendings" schema="public" optimistic-lock="version">
+        <id name="idSpending" type="int">
+            <column name="id_spending" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="type" class="com.netcracker.financeapp.mapping.Type" fetch="select">
+            <column name="id_type" />
+        </many-to-one>
+        <property name="value" type="java.lang.Integer">
+            <column name="value" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="100" />
+        </property>
+        <property name="date" type="date">
+            <column name="date" length="13" />
+        </property>
+    </class>
+</hibernate-mapping>

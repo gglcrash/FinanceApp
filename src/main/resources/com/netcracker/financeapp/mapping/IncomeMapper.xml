@@ -1,8 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.netcracker.financeapp.dao.IncomeMapper">
-    <sql id="userColumns">id_income as idIncome, value, description, date, id_type as type</sql>
-    <select id="getIncome" parameterType="int" resultType="Income">
-        select <include refid="userColumns"/> from income where id_income = #{idIncome}
+
+<mapper namespace="com.netcracker.financeapp.mapping.Income">
+   
+    <resultMap id="incomeMap" type="Income">
+  <id property="idIncome" column="id_income" javaType="int" jdbcType="INTEGER"/>
+  <result property="value"  column="value" javaType="int" jdbcType="INTEGER"/>
+  <result property="description"  column="description" javaType="String" jdbcType="VARCHAR"/>
+  <result property="date"  column="date" javaType="Date" jdbcType="TIMESTAMP"/>
+  <result property="type"  column="id_type" javaType="int" jdbcType="INTEGER"/>
+   </resultMap>
+
+    
+    <select id="getIncomeById" parameterType="int" resultType="Income">
+        select * from income where id_income = #{idIncome}
     </select>
 </mapper>

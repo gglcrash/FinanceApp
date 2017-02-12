@@ -6,6 +6,7 @@
 package com.netcracker.financeapp.controller;
 
 import com.netcracker.financeapp.dao.IncomeMapper;
+import com.netcracker.financeapp.mapping.Income;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,8 +21,11 @@ public class IndexController {
  
     @RequestMapping("index.htm")
     public ModelAndView execute(Model model) {
-        //model.addAttribute("income", incomeMapper.getIncome(1));
-        return new ModelAndView("index");
+        Income inc = incomeMapper.getIncome(1);
+        System.out.println(inc.getDescription());
+        System.out.println(inc.getValue());
+        
+        return new ModelAndView("start");
     }
  
 }

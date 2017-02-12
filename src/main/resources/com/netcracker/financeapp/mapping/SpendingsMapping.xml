@@ -1,1 +1,19 @@
 
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.netcracker.financeapp.mapping.Spendings">
+   
+    <resultMap id="spendingsMap" type="Spendings">
+  <id property="idSpending" column="id_spending" javaType="int" jdbcType="INTEGER"/>
+  <result property="value"  column="value" javaType="int" jdbcType="INTEGER"/>
+  <result property="description"  column="description" javaType="String" jdbcType="VARCHAR"/>
+  <result property="date"  column="date" javaType="Date" jdbcType="TIMESTAMP"/>
+  <result property="type"  column="id_type" javaType="int" jdbcType="INTEGER"/>
+   </resultMap>
+
+    
+    <select id="getSpendingById" parameterType="int" resultType="Spendings">
+        select * from spendings where id_spending = #{idSpending}
+    </select>
+</mapper>

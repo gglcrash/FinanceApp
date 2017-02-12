@@ -17,8 +17,7 @@
  
   <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="typeAliasesPackage" value="com.netcracker.financeapp.mapping" />
-        <property name="mapperLocations" value="classpath*:com/netcracker/financeapp/mapping/*Mapper.xml" />
+    <property name="configLocation" value="WEB-INF/mybatis-config.xml" />
     </bean>
  
     <tx:annotation-driven transaction-manager="transactionManager" />
@@ -28,8 +27,8 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
  
-    <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="org.eminmamedov.webapp.dao.IncomeMapper" />
+    <bean id="incomeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.netcracker.financeapp.dao.IncomeMapper" />
         <property name="sqlSessionFactory" ref="sessionFactory" />
     </bean>
  

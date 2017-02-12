@@ -6,7 +6,9 @@
 package com.netcracker.financeapp.dao;
 
 import com.netcracker.financeapp.mapping.Income;
+import java.util.ArrayList;
 
 public interface IncomeMapper {
-    Income getIncome(int idIncome);
+    Income getIncomeById(int idIncome);
+    ArrayList<Income> getAllIncomes();
 }

@@ -15,4 +15,8 @@
     <select id="getIncomeById" parameterType="int" resultType="Income">
         select * from income where id_income = #{idIncome}
     </select>
+    
+    <select id="getAllIncomes" parameterType="int" resultMap="incomeMap">
+        select * from income
+    </select>
 </mapper>

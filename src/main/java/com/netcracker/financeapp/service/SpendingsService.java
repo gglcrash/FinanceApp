@@ -9,6 +9,7 @@ import com.netcracker.financeapp.dao.SpendingsMapper;
 import com.netcracker.financeapp.mapping.Income;
 import com.netcracker.financeapp.mapping.Spendings;
 import java.util.ArrayList;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +20,12 @@ public class SpendingsService {
         this.spendingsMapper = spendingsMapper;
     }
     
-    public ArrayList<Spendings> getIncomeList() {
-        ArrayList<Spendings> tmp = spendingsMapper.getAllSpendings();
+    public ArrayList<Spendings> getSpendingsList(Date startDate, Date endDate) {
+        ArrayList<Spendings> tmp = spendingsMapper.getAllSpendings(startDate, endDate);
         return tmp;
+    }
+    
+    public Spendings getMaxSpendings(){
+        return spendingsMapper.getMaxSpending();
     }
 }

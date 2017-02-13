@@ -5,11 +5,13 @@
   <typeAliases>
     <typeAlias alias="Income" type ="com.netcracker.financeapp.mapping.Income" />
     <typeAlias alias="Spendings" type ="com.netcracker.financeapp.mapping.Spendings" />
-    <typeAlias alias="Type" type ="com.netcracker.financeapp.mapping.Type" />
+    <typeAlias alias="IncomeType" type ="com.netcracker.financeapp.mapping.IncomeType" />
+    <typeAlias alias="SpendingsType" type ="com.netcracker.financeapp.mapping.SpendingsType" />
   </typeAliases>
   <mappers>
     <mapper resource="com/netcracker/financeapp/dao/IncomeMapper.xml"/>
     <mapper resource="com/netcracker/financeapp/dao/SpendingsMapper.xml"/>
-    <mapper resource="com/netcracker/financeapp/dao/TypeMapper.xml"/>
+    <mapper resource="com/netcracker/financeapp/dao/IncomeTypeMapper.xml"/>
+    <mapper resource="com/netcracker/financeapp/dao/SpendingsTypeMapper.xml"/>
   </mappers>
 </configuration>

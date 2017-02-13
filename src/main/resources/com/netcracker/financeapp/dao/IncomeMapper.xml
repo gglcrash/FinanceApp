@@ -12,11 +12,11 @@
    </resultMap>
 
     
-    <select id="getIncomeById" parameterType="int" resultType="Income">
-        select * from income where id_income = #{idIncome}
+    <select id="getMaxIncome" resultType="Income">
+        select * from income where value = (select max(value) from income)
     </select>
     
-    <select id="getAllIncomes" parameterType="int" resultMap="incomeMap">
-        select * from income
+    <select id="getAllIncomes" parameterType="java.util.Date" resultMap="incomeMap">
+        select * from income where date > #{startDate}::date and date < #{endDate}::date
     </select>
 </mapper>

@@ -6,10 +6,11 @@
 package com.netcracker.financeapp.dao;
 
 import com.netcracker.financeapp.mapping.Income;
-import com.netcracker.financeapp.mapping.Type;
+import com.netcracker.financeapp.mapping.IncomeType;
 import java.util.ArrayList;
 
-public interface TypeMapper {
-    Income getTypeById(int idIncome);
-    ArrayList<Type> getAllTypes();
+public interface IncomeTypeMapper {
+    IncomeType getTypeById(int idIncome);
+    int getTypeIdByName(String typeName);
+    ArrayList<String> getTypeNames();
 }

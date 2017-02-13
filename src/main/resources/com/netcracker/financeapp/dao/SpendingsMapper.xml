@@ -12,7 +12,11 @@
    </resultMap>
 
     
-    <select id="getSpendingById" parameterType="int" resultType="Spendings">
-        select * from spendings where id_spending = #{idSpending}
+    <select id="getMaxSpending" resultType="Spendings">
+        select * from spendings where value = (select max(value) from spendings)
+    </select>
+    
+    <select id="getAllSpendings" parameterType="java.util.Date" resultMap="spendingsMap">
+        select * from spendings where date > #{startDate}::date and date < #{endDate}::date
     </select>
 </mapper>

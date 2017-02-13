@@ -7,8 +7,9 @@ package com.netcracker.financeapp.dao;
 
 import com.netcracker.financeapp.mapping.Income;
 import java.util.ArrayList;
+import java.util.Date;
 
 public interface IncomeMapper {
-    Income getIncomeById(int idIncome);
-    ArrayList<Income> getAllIncomes();
+    Income getMaxIncome();
+    ArrayList<Income> getAllIncomes(Date startDate, Date endDate);
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.netcracker.financeapp.mapping.Type">
+   
+    <resultMap id="incomeMap" type="IncomeType">
+  <id property="idType" column="id_type" javaType="int" jdbcType="INTEGER"/>
+  <result property="name"  column="name" javaType="String" jdbcType="VARCHAR"/>
+   </resultMap>
+ 
+    <select id="getTypeById" parameterType="int" resultType="IncomeType">
+        select * from income_type where id_type = #{idType}
+    </select>
+    
+    <select id="getTypeNames" resultType="String">
+        select name from income_type
+    </select>
+    
+    <select id="getTypeIdByName" parameterType="String" resultType="int">
+        select id_type from income_type where name = #{typeName}
+    </select>
+    
+    
+</mapper>
+

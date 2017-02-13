@@ -5,11 +5,14 @@
  */
 package com.netcracker.financeapp.controller;
 
+import com.netcracker.financeapp.beans.CalculationBean;
 import com.netcracker.financeapp.mapping.Income;
 import com.netcracker.financeapp.service.IncomeService;
 import com.netcracker.financeapp.service.SpendingsService;
-import com.netcracker.financeapp.service.TypeService;
+import com.netcracker.financeapp.service.IncomeTypeService;
+import com.netcracker.financeapp.service.SpendingsTypeService;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +28,32 @@ public class DataController {
     @Autowired
     SpendingsService spendingService;
     @Autowired
-    TypeService typeService;
+    IncomeTypeService incomeTypeService;
+    @Autowired
+    SpendingsTypeService spendingsTypeService;
+    @Autowired
+    CalculationBean calculation;
     
     boolean isIncome;
     ArrayList<Income> incomeList;
+    Date startDate;
+    Date endDate;
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
       
     public void setIsIncome(boolean isIncome) {
         this.isIncome = isIncome;
@@ -43,6 +68,13 @@ public class DataController {
     }
 
     public ArrayList<Income> getIncomeList() {
-        return incomeService.getIncomeList();
+        //if(isIncome){return income} esle {return spendings}
+        int x = 0;
+        return incomeService.getIncomeList(startDate, endDate);
+    }
+    
+    public int getSaldo(){
+        return calculation.calculateSaldo(incomeService.getIncomeList(startDate, endDate),
+                spendingService.getSpendingsList(startDate, endDate));
     }
 }

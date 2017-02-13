@@ -1,18 +1,18 @@
 package com.netcracker.financeapp.mapping;
 
-public class Type  implements java.io.Serializable {
+public class SpendingsType  implements java.io.Serializable {
 
      private int idType;
      private String name;
 
-    public Type() {
+    public SpendingsType() {
     }
 
 	
-    public Type(int idType) {
+    public SpendingsType(int idType) {
         this.idType = idType;
     }
-    public Type(int idType, String name) {
+    public SpendingsType(int idType, String name) {
        this.idType = idType;
        this.name = name;
     }

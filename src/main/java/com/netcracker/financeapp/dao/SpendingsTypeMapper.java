@@ -6,11 +6,12 @@
 package com.netcracker.financeapp.dao;
 
 import com.netcracker.financeapp.mapping.Income;
-import com.netcracker.financeapp.mapping.Spendings;
+import com.netcracker.financeapp.mapping.IncomeType;
+import com.netcracker.financeapp.mapping.SpendingsType;
 import java.util.ArrayList;
-import java.util.Date;
 
-public interface SpendingsMapper {
-    Spendings getMaxSpending();
-    ArrayList<Spendings> getAllSpendings(Date startDate, Date endDate);
+public interface SpendingsTypeMapper {
+    SpendingsType getTypeById(int idSpendings);
+    int getTypeIdByName(String typeName);
+    ArrayList<String> getTypeNames();
 }

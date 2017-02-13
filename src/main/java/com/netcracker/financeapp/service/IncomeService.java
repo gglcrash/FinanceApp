@@ -19,6 +19,7 @@ public class IncomeService {
     }
     
     public ArrayList<Income> getIncomeList() {
-        return incomeMapper.getAllIncomes();
+        ArrayList<Income> tmp = incomeMapper.getAllIncomes();
+        return tmp;
     }
 }

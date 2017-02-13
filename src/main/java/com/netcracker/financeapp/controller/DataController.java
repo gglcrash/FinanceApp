@@ -12,12 +12,12 @@ import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 @ManagedBean(name = "dataController")
-@RequestScoped
 @Controller
+@Scope("request")
 public class DataController {
     
     @Autowired

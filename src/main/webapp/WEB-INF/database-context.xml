@@ -19,17 +19,14 @@
         <property name="dataSource" ref="dataSource" />
     <property name="configLocation" value="WEB-INF/mybatis-config.xml" />
     </bean>
- 
-    <tx:annotation-driven transaction-manager="transactionManager" />
- 
-    <bean id="transactionManager"
-        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource" />
-    </bean>
- 
+
     <bean id="incomeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
         <property name="mapperInterface" value="com.netcracker.financeapp.dao.IncomeMapper" />
         <property name="sqlSessionFactory" ref="sessionFactory" />
+    </bean>
+    
+    <bean id="incomeService" class="com.netcracker.financeapp.service.IncomeService">
+	<property name="incomeMapper" ref="incomeMapper"/> 
     </bean>
  
 </beans>

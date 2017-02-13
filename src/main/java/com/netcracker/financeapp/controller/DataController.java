@@ -5,22 +5,30 @@
  */
 package com.netcracker.financeapp.controller;
 
-import com.netcracker.financeapp.dao.IncomeMapper;
 import com.netcracker.financeapp.mapping.Income;
+import com.netcracker.financeapp.service.IncomeService;
+import com.netcracker.financeapp.service.SpendingsService;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 
 @ManagedBean(name = "dataController")
 @RequestScoped
+@Controller
 public class DataController {
-    @Autowired
-    IncomeMapper incomeMapper;
     
-   boolean isIncome;
-   ArrayList<Income> incomeList;
-
+    @Autowired
+    IncomeService incomeService;
+    
+    @Autowired
+    SpendingsService spendingService;
+    
+    boolean isIncome;
+    ArrayList<Income> incomeList;
+      
     public void setIsIncome(boolean isIncome) {
         this.isIncome = isIncome;
     }
@@ -34,6 +42,6 @@ public class DataController {
     }
 
     public ArrayList<Income> getIncomeList() {
-        return incomeMapper.getAllIncomes();
+        return incomeService.getIncomeList();
     }
 }

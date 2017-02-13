@@ -6,7 +6,6 @@
     <typeAlias alias="Income" type ="com.netcracker.financeapp.mapping.Income" />
   </typeAliases>
   <mappers>
-    <mapper resource="com/netcracker/financeapp/mapping/IncomeMapper.xml"/>
+    <mapper resource="com/netcracker/financeapp/dao/IncomeMapper.xml"/>
   </mappers>
-
 </configuration>

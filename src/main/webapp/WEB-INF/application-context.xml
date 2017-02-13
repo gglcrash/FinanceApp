@@ -5,7 +5,8 @@
     xmlns:beans="http://www.springframework.org/schema/beans"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd"
-    default-autowire="byName">
+    >
+
  
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
@@ -18,5 +19,5 @@
     <import resource="database-context.xml" />
  
     <context:component-scan base-package="com.netcracker.financeapp" />
- 
+    <context:annotation-config/>
 </beans>

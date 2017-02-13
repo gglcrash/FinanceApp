@@ -10,6 +10,7 @@ import com.netcracker.financeapp.mapping.Income;
 import com.netcracker.financeapp.mapping.Spendings;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +28,13 @@ public class SpendingsService {
     
     public Spendings getMaxSpendings(){
         return spendingsMapper.getMaxSpending();
+    }
+   
+    public ArrayList<Spendings> getAllSpendingsListByTypeName(String typeName){
+        return spendingsMapper.getAllSpendingsListByTypeName(typeName);
+    }
+    
+    public ArrayList<Spendings> getSpendingsListByTypeName(Date startDate,Date endDateString,String typeName){
+        return spendingsMapper.getSpendingsListByTypeName(startDate, endDateString, typeName);
     }
 }

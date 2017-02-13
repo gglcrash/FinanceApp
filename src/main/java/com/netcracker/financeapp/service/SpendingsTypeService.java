@@ -23,15 +23,15 @@ public class SpendingsTypeService {
         this.spendingsTypeMapper = typeMapper;
     }
     
-    public SpendingsType getTypeById(int id_type) {
+    public SpendingsType getSpendingsTypeById(int id_type) {
         return spendingsTypeMapper.getTypeById(id_type);
     }
     
-    public ArrayList<String> getTypeNames(){
+    public ArrayList<String> getSpendingsTypeNames(){
         return spendingsTypeMapper.getTypeNames();
     }
     
-    public int getTypeIdByName(String typeName){
+    public int getSpendingsTypeIdByName(String typeName){
         return spendingsTypeMapper.getTypeIdByName(typeName);
     }
 }

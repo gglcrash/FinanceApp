@@ -8,15 +8,15 @@
   <result property="name"  column="name" javaType="String" jdbcType="VARCHAR"/>
    </resultMap>
  
-    <select id="getTypeById" parameterType="int" resultType="IncomeType">
+    <select id="getIncomeTypeById" parameterType="int" resultType="IncomeType">
         select * from income_type where id_type = #{idType}
     </select>
     
-    <select id="getTypeNames" resultType="String">
+    <select id="getIncomeTypeNames" resultType="String">
         select name from income_type
     </select>
     
-    <select id="getTypeIdByName" parameterType="String" resultType="int">
+    <select id="getIncomeTypeIdByName" parameterType="String" resultType="int">
         select id_type from income_type where name = #{typeName}
     </select>
     

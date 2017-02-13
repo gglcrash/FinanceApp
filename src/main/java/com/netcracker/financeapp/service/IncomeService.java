@@ -9,6 +9,7 @@ import com.netcracker.financeapp.dao.IncomeMapper;
 import com.netcracker.financeapp.mapping.Income;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,4 +29,13 @@ public class IncomeService {
     public Income getMaxIncome(){
         return incomeMapper.getMaxIncome();
     }
+    
+    public ArrayList<Income> getAllIncomeListByTypeName(String typeName){
+        return incomeMapper.getAllIncomeListByTypeName(typeName);
+    }
+    
+    public ArrayList<Income> getIncomeListByTypeName(Date startDate,Date endDateString,String typeName){
+        return incomeMapper.getIncomeListByTypeName(startDate, endDateString, typeName);
+    }
+
 }

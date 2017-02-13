@@ -13,10 +13,19 @@
 
     
     <select id="getMaxSpending" resultType="Spendings">
-        select * from spendings where value = (select max(value) from spendings)
+        select * from spendings where value = (select max(value) from spendings);
     </select>
     
-    <select id="getAllSpendings" parameterType="java.util.Date" resultMap="spendingsMap">
-        select * from spendings where date > #{startDate}::date and date < #{endDate}::date
+    <select id="getAllSpendings" resultMap="spendingsMap">
+        select * from spendings where date between #{startDate}::date and #{endDate}::date;
+    </select>
+    
+    <select id="getAllSpendingsListByTypeName" parameterType="String" resultMap="spendingsMap">
+        select * from spendings where id_type = (select id_type from spendings_type where name = #{typeName});
+    </select>
+    
+    <select id="getSpendingsListByTypeName" resultMap="spendingsMap">
+        select * from spendings where date between #{startDate}::date and #{endDate}::date 
+        and id_type = (select id_type from spendings_type where name = #{typeName});
     </select>
 </mapper>

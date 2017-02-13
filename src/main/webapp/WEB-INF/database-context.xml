@@ -46,7 +46,7 @@
         <property name="sqlSessionFactory" ref="sessionFactory" />
     </bean>
     
-    <bean id="IncomeTypeService" class="com.netcracker.financeapp.service.IncomeTypeService">
+    <bean id="incomeTypeService" class="com.netcracker.financeapp.service.IncomeTypeService">
 	<property name="typeMapper" ref="incomeTypeMapper"/> 
     </bean>
     

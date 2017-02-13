@@ -5,12 +5,16 @@
  */
 package com.netcracker.financeapp.dao;
 
-import com.netcracker.financeapp.mapping.Income;
 import com.netcracker.financeapp.mapping.Spendings;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import org.apache.ibatis.annotations.Param;
 
 public interface SpendingsMapper {
     Spendings getMaxSpending();
-    ArrayList<Spendings> getAllSpendings(Date startDate, Date endDate);
+    ArrayList<Spendings> getAllSpendings(@Param("startDate") Date startDate,@Param("endDate") Date endDate);
+    ArrayList<Spendings> getAllSpendingsListByTypeName(String typeName);
+    ArrayList<Spendings> getSpendingsListByTypeName(@Param("startDate") Date startDate,
+        @Param("endDate") Date endDateString,@Param("typeName") String typeName);
 }

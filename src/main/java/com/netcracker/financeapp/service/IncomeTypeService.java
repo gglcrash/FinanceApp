@@ -21,15 +21,15 @@ public class IncomeTypeService {
         this.incomeTypeMapper = typeMapper;
     }
     
-    public IncomeType getTypeById(int id_type) {
+    public IncomeType getIncomeTypeById(int id_type) {
         return incomeTypeMapper.getTypeById(id_type);
     }
     
-    public ArrayList<String> getTypeNames(){
+    public ArrayList<String> getIncomeTypeNames(){
         return incomeTypeMapper.getTypeNames();
     }
     
-    public int getTypeIdByName(String typeName){
+    public int getIncomeTypeIdByName(String typeName){
         return incomeTypeMapper.getTypeIdByName(typeName);
     }
 }

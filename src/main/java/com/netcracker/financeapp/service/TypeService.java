@@ -6,21 +6,23 @@
 package com.netcracker.financeapp.service;
 
 import com.netcracker.financeapp.dao.SpendingsMapper;
+import com.netcracker.financeapp.dao.TypeMapper;
 import com.netcracker.financeapp.mapping.Income;
 import com.netcracker.financeapp.mapping.Spendings;
+import com.netcracker.financeapp.mapping.Type;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SpendingsService {
-    SpendingsMapper spendingsMapper;
-    public void setSpendingsMapper(SpendingsMapper spendingsMapper) {
-        this.spendingsMapper = spendingsMapper;
+public class TypeService {
+    TypeMapper typeMapper;
+    public void setTypeMapper(TypeMapper typeMapper) {
+        this.typeMapper = typeMapper;
     }
     
-    public ArrayList<Spendings> getIncomeList() {
-        ArrayList<Spendings> tmp = spendingsMapper.getAllSpendings();
+    public ArrayList<Type> getTypeList() {
+        ArrayList<Type> tmp = typeMapper.getAllTypes();
         return tmp;
     }
 }

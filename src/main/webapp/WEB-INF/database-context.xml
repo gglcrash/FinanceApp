@@ -19,7 +19,7 @@
         <property name="dataSource" ref="dataSource" />
     <property name="configLocation" value="WEB-INF/mybatis-config.xml" />
     </bean>
-
+    
     <bean id="incomeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
         <property name="mapperInterface" value="com.netcracker.financeapp.dao.IncomeMapper" />
         <property name="sqlSessionFactory" ref="sessionFactory" />
@@ -28,5 +28,26 @@
     <bean id="incomeService" class="com.netcracker.financeapp.service.IncomeService">
 	<property name="incomeMapper" ref="incomeMapper"/> 
     </bean>
- 
+    
+    
+    <bean id="spendingsMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.netcracker.financeapp.dao.SpendingsMapper" />
+        <property name="sqlSessionFactory" ref="sessionFactory" />
+    </bean>
+    
+    <bean id="spendingsService" class="com.netcracker.financeapp.service.SpendingsService">
+	<property name="spendingsMapper" ref="spendingsMapper"/> 
+    </bean>
+    
+    
+    
+    <bean id="typeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.netcracker.financeapp.dao.TypeMapper" />
+        <property name="sqlSessionFactory" ref="sessionFactory" />
+    </bean>
+    
+    <bean id="typeService" class="com.netcracker.financeapp.service.TypeService">
+	<property name="typeMapper" ref="typeMapper"/> 
+    </bean>
+    
 </beans>

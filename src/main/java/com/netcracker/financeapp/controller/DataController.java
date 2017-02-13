@@ -8,6 +8,7 @@ package com.netcracker.financeapp.controller;
 import com.netcracker.financeapp.mapping.Income;
 import com.netcracker.financeapp.service.IncomeService;
 import com.netcracker.financeapp.service.SpendingsService;
+import com.netcracker.financeapp.service.TypeService;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -19,12 +20,12 @@ import org.springframework.stereotype.Controller;
 @Controller
 @Scope("request")
 public class DataController {
-    
     @Autowired
     IncomeService incomeService;
-    
     @Autowired
     SpendingsService spendingService;
+    @Autowired
+    TypeService typeService;
     
     boolean isIncome;
     ArrayList<Income> incomeList;

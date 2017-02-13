@@ -4,8 +4,12 @@
 <configuration>
   <typeAliases>
     <typeAlias alias="Income" type ="com.netcracker.financeapp.mapping.Income" />
+    <typeAlias alias="Spendings" type ="com.netcracker.financeapp.mapping.Spendings" />
+    <typeAlias alias="Type" type ="com.netcracker.financeapp.mapping.Type" />
   </typeAliases>
   <mappers>
     <mapper resource="com/netcracker/financeapp/dao/IncomeMapper.xml"/>
+    <mapper resource="com/netcracker/financeapp/dao/SpendingsMapper.xml"/>
+    <mapper resource="com/netcracker/financeapp/dao/TypeMapper.xml"/>
   </mappers>
 </configuration>

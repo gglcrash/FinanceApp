@@ -13,6 +13,7 @@ import com.netcracker.financeapp.service.IncomeTypeService;
 import com.netcracker.financeapp.service.SpendingsTypeService;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,8 +70,12 @@ public class DataController {
 
     public ArrayList<Income> getIncomeList() {
         //if(isIncome){return income} esle {return spendings}
-        int x = 0;
-        return incomeService.getIncomeList(startDate, endDate);
+
+        GregorianCalendar calendar = new GregorianCalendar(2016,02,10);
+        Date start = calendar.getTime();
+        GregorianCalendar calendar2 = new GregorianCalendar(2018,02,10);
+        Date end = calendar2.getTime();
+        return incomeService.getIncomeList(start, end);
     }
     
     public int getSaldo(){

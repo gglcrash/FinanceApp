@@ -8,7 +8,45 @@
     <body>
         <f:view>
             <h:form id="mainForm">
-                <h:dataTable id="dataList" value="#{dataController.incomeList}" bgcolor="#F1F1F1" border="10" />
+                <h:dataTable value="#{dataController.incomeList}" var="incomeList">
+                    <f:facet name="header">
+                        <h:outputText value="Incomes" />
+                    </f:facet>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ID" />
+                        </f:facet>
+                        <h:outputText value="#{incomeList.idIncome}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Value" />
+                        </f:facet>
+                        <h:outputText value="#{incomeList.value}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Description" />
+                        </f:facet>
+                        <h:outputText value="#{incomeList.description}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Date" />
+                        </f:facet>
+                        <h:outputText value="#{incomeList.date}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Type ID" />
+                        </f:facet>
+                        <h:outputText value="#{incomeList.type}" />
+                    </h:column>
+                </h:dataTable>
             </h:form>
         </f:view>
     </body>

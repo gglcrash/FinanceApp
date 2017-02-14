@@ -28,4 +28,9 @@
         select * from income where date between #{startDate}::date and #{endDate}::date 
         and id_type = (select id_type from income_type where name = #{typeName});
     </select>
+    
+    <select id="insertIncome" resultType="int">
+        insert into income(value,description,date,id_type) values(#{value},#{desc},
+        #{date}, #{idType}) returning id;
+    </select>
 </mapper>

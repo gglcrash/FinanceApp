@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.netcracker.financeapp.mapping.Spendings">
+<mapper namespace="com.netcracker.financeapp.dao.SpendingsMapper">
    
     <resultMap id="spendingsMap" type="Spendings">
   <id property="idSpending" column="id_spending" javaType="int" jdbcType="INTEGER"/>
@@ -12,7 +12,7 @@
    </resultMap>
 
     
-    <select id="getMaxSpending" resultType="Spendings">
+    <select id="getMaxSpendings" resultType="Spendings">
         select * from spendings where value = (select max(value) from spendings);
     </select>
     
@@ -27,5 +27,10 @@
     <select id="getSpendingsListByTypeName" resultMap="spendingsMap">
         select * from spendings where date between #{startDate}::date and #{endDate}::date 
         and id_type = (select id_type from spendings_type where name = #{typeName});
+    </select>
+    
+    <select id="insertSpendings" resultType="int">
+        insert into spendings(value,description,date,id_type) values(#{value},#{desc},
+        #{date}, #{idType}) returning id;
     </select>
 </mapper>

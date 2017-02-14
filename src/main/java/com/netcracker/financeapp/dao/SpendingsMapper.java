@@ -12,9 +12,11 @@ import java.util.HashMap;
 import org.apache.ibatis.annotations.Param;
 
 public interface SpendingsMapper {
-    Spendings getMaxSpending();
+    Spendings getMaxSpendings();
     ArrayList<Spendings> getAllSpendings(@Param("startDate") Date startDate,@Param("endDate") Date endDate);
     ArrayList<Spendings> getAllSpendingsListByTypeName(String typeName);
     ArrayList<Spendings> getSpendingsListByTypeName(@Param("startDate") Date startDate,
         @Param("endDate") Date endDateString,@Param("typeName") String typeName);
+    int insertSpendings(@Param("value") int Value,@Param("desc") String description,
+            @Param("date") Date date, @Param("idType") int idType);
 }

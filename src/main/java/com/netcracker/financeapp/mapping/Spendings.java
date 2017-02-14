@@ -9,7 +9,7 @@ public class Spendings  implements java.io.Serializable {
 
      private int idSpending;
      private int type;
-     private Integer value;
+     private int value;
      private String description;
      private Date date;
 
@@ -19,7 +19,7 @@ public class Spendings  implements java.io.Serializable {
     public Spendings(int idSpending) {
         this.idSpending = idSpending;
     }
-    public Spendings(int idSpending, int type, Integer value, String description, Date date) {
+    public Spendings(int idSpending, int type, int value, String description, Date date) {
        this.idSpending = idSpending;
        this.type = type;
        this.value = value;
@@ -41,11 +41,11 @@ public class Spendings  implements java.io.Serializable {
     public void setType(int type) {
         this.type = type;
     }
-    public Integer getValue() {
+    public int getValue() {
         return this.value;
     }
     
-    public void setValue(Integer value) {
+    public void setValue(int value) {
         this.value = value;
     }
     public String getDescription() {

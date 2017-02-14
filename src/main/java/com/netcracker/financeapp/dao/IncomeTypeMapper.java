@@ -10,7 +10,7 @@ import com.netcracker.financeapp.mapping.IncomeType;
 import java.util.ArrayList;
 
 public interface IncomeTypeMapper {
-    IncomeType getTypeById(int idIncome);
-    int getTypeIdByName(String typeName);
-    ArrayList<String> getTypeNames();
+    IncomeType getIncomeTypeById(int idIncome);
+    int getIncomeTypeIdByName(String typeName);
+    ArrayList<String> getIncomeTypeNames();
 }

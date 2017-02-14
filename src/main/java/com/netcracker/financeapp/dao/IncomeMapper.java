@@ -17,5 +17,7 @@ public interface IncomeMapper {
     ArrayList<Income> getAllIncomes(@Param("startDate") Date startDate,@Param("endDate") Date endDate);
     ArrayList<Income> getAllIncomeListByTypeName(String typeName);
     ArrayList<Income> getIncomeListByTypeName(@Param("startDate") Date startDate,
-        @Param("endDate") Date endDateString,@Param("typeName") String typeName);
+            @Param("endDate") Date endDateString,@Param("typeName") String typeName);
+    int insertIncome(@Param("value") int Value,@Param("desc") String description,
+            @Param("date") Date date, @Param("idType") int idType);
 }

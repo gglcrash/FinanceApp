@@ -22,14 +22,14 @@ public class IncomeTypeService {
     }
     
     public IncomeType getIncomeTypeById(int id_type) {
-        return incomeTypeMapper.getTypeById(id_type);
+        return incomeTypeMapper.getIncomeTypeById(id_type);
     }
     
     public ArrayList<String> getIncomeTypeNames(){
-        return incomeTypeMapper.getTypeNames();
+        return incomeTypeMapper.getIncomeTypeNames();
     }
     
     public int getIncomeTypeIdByName(String typeName){
-        return incomeTypeMapper.getTypeIdByName(typeName);
+        return incomeTypeMapper.getIncomeTypeIdByName(typeName);
     }
 }

@@ -24,14 +24,14 @@ public class SpendingsTypeService {
     }
     
     public SpendingsType getSpendingsTypeById(int id_type) {
-        return spendingsTypeMapper.getTypeById(id_type);
+        return spendingsTypeMapper.getSpendingsTypeById(id_type);
     }
     
     public ArrayList<String> getSpendingsTypeNames(){
-        return spendingsTypeMapper.getTypeNames();
+        return spendingsTypeMapper.getSpendingsTypeNames();
     }
     
     public int getSpendingsTypeIdByName(String typeName){
-        return spendingsTypeMapper.getTypeIdByName(typeName);
+        return spendingsTypeMapper.getSpendingsTypeIdByName(typeName);
     }
 }

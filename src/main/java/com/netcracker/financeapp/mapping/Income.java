@@ -6,7 +6,6 @@ import java.util.Date;
 
 public class Income  implements java.io.Serializable {
 
-
      private int idIncome;
      private int type;
      private int value;

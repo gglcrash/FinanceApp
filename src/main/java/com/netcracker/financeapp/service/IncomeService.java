@@ -38,4 +38,7 @@ public class IncomeService {
         return incomeMapper.getIncomeListByTypeName(startDate, endDateString, typeName);
     }
 
+    public int insertIncome(int value, String desc, Date date, int idType){
+        return incomeMapper.insertIncome(value, desc, date, idType);
+    }
 }

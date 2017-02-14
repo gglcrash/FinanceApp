@@ -27,7 +27,7 @@ public class SpendingsService {
     }
     
     public Spendings getMaxSpendings(){
-        return spendingsMapper.getMaxSpending();
+        return spendingsMapper.getMaxSpendings();
     }
    
     public ArrayList<Spendings> getAllSpendingsListByTypeName(String typeName){
@@ -36,5 +36,9 @@ public class SpendingsService {
     
     public ArrayList<Spendings> getSpendingsListByTypeName(Date startDate,Date endDateString,String typeName){
         return spendingsMapper.getSpendingsListByTypeName(startDate, endDateString, typeName);
+    }
+    
+    public int insertSpendings(int value, String desc, Date date, int idType){
+        return spendingsMapper.insertSpendings(value, desc, date, idType);
     }
 }

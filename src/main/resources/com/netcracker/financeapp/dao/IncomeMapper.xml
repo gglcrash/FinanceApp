@@ -17,7 +17,7 @@
     </select>
     
     <select id="getAllIncomes" resultMap="incomeMap">
-        select * from income where date between #{startDate}::date and #{endDate}::date;
+        select * from income where date between #{startDate} and #{endDate};
     </select>
 
     <select id="getAllIncomeListByTypeName" parameterType="String" resultMap="incomeMap">
@@ -25,7 +25,7 @@
     </select>
     
     <select id="getIncomeListByTypeName" resultMap="incomeMap">
-        select * from income where date between #{startDate}::date and #{endDate}::date 
+        select * from income where date between #{startDate} and #{endDate} 
         and id_type = (select id_type from income_type where name = #{typeName});
     </select>
     

@@ -17,7 +17,7 @@
     </select>
     
     <select id="getAllSpendings" resultMap="spendingsMap">
-        select * from spendings where date between #{startDate}::date and #{endDate}::date;
+        select * from spendings where date between #{startDate} and #{endDate};
     </select>
     
     <select id="getAllSpendingsListByTypeName" parameterType="String" resultMap="spendingsMap">
@@ -25,7 +25,7 @@
     </select>
     
     <select id="getSpendingsListByTypeName" resultMap="spendingsMap">
-        select * from spendings where date between #{startDate}::date and #{endDate}::date 
+        select * from spendings where date between #{startDate} and #{endDate}
         and id_type = (select id_type from spendings_type where name = #{typeName});
     </select>
     

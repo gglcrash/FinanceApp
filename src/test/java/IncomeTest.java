@@ -9,11 +9,13 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @ContextConfiguration(locations={ "file:src/main/webapp/WEB-INF/application-context.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
+@TestPropertySource({ "file:src/main/resources/webapp-derby.properties" })
 public class IncomeTest {
     @Autowired
     IncomeService incomeService;

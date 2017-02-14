@@ -5,12 +5,8 @@
  */
 package com.netcracker.financeapp.service;
 
-import com.netcracker.financeapp.dao.SpendingsMapper;
-import com.netcracker.financeapp.mapping.Income;
-import com.netcracker.financeapp.mapping.Spendings;
 import com.netcracker.financeapp.mapping.IncomeType;
 import java.util.ArrayList;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.netcracker.financeapp.dao.IncomeTypeMapper;
 

@@ -6,10 +6,8 @@
 package com.netcracker.financeapp.dao;
 
 import com.netcracker.financeapp.mapping.Income;
-import com.netcracker.financeapp.mapping.Spendings;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import org.apache.ibatis.annotations.Param;
 
 public interface IncomeMapper {

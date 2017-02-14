@@ -6,12 +6,9 @@
 package com.netcracker.financeapp.service;
 
 import com.netcracker.financeapp.dao.SpendingsMapper;
-import com.netcracker.financeapp.mapping.Income;
 import com.netcracker.financeapp.mapping.Spendings;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -5,7 +5,6 @@
  */
 package com.netcracker.financeapp.dao;
 
-import com.netcracker.financeapp.mapping.Income;
 import com.netcracker.financeapp.mapping.IncomeType;
 import java.util.ArrayList;
 

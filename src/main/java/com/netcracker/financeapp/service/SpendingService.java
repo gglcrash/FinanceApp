@@ -5,34 +5,33 @@
  */
 package com.netcracker.financeapp.service;
 
+import com.netcracker.financeapp.dao.FinanceMapper;
 import com.netcracker.financeapp.mapping.Finance;
 import java.util.ArrayList;
 import java.util.Date;
 import org.springframework.stereotype.Service;
-import com.netcracker.financeapp.dao.FinanceMapper;
-
 
 @Service
-public class IncomeService {
+public class SpendingService {
     FinanceMapper financeMapper;
-    public void setIncomeMapper(FinanceMapper financeMapper) {
+    public void setSpendingMapper(FinanceMapper financeMapper) {
         this.financeMapper = financeMapper;
     }
     
-    public ArrayList<Finance> getIncomeList(Date startDate, Date endDate) {
-        ArrayList<Finance> tmp = financeMapper.getAllIncomes(startDate, endDate);
+    public ArrayList<Finance> getSpendingsList(Date startDate, Date endDate) {
+        ArrayList<Finance> tmp = financeMapper.getAllSpendings(startDate, endDate);
         return tmp;
     }
     
-    public Finance getMaxIncome(){
-        return financeMapper.getMaxIncome();
+    public Finance getMaxSpending(){
+        return financeMapper.getMaxSpending();
     }
-    
-    public ArrayList<Finance> getIncomeListByTypeName(Date startDate,Date endDateString,String typeName){
+   
+    public ArrayList<Finance> getSpendingListByTypeName(Date startDate,Date endDateString,String typeName){
         return financeMapper.getFinanceListByTypeName(startDate, endDateString, typeName);
     }
-
-    public int insertIncome(int value, String desc, Date date, int idType){
+    
+    public int insertSpendings(int value, String desc, Date date, int idType){
         return financeMapper.insertFinance(value, desc, date, idType);
     }
 }

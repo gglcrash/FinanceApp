@@ -6,11 +6,10 @@
 package com.netcracker.financeapp.controller;
 
 import com.netcracker.financeapp.beans.CalculationBean;
-import com.netcracker.financeapp.mapping.Income;
+import com.netcracker.financeapp.mapping.Finance;
 import com.netcracker.financeapp.service.IncomeService;
-import com.netcracker.financeapp.service.SpendingsService;
-import com.netcracker.financeapp.service.IncomeTypeService;
-import com.netcracker.financeapp.service.SpendingsTypeService;
+import com.netcracker.financeapp.service.SpendingService;
+import com.netcracker.financeapp.service.TypeService;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -26,16 +25,14 @@ public class DataController {
     @Autowired
     IncomeService incomeService;
     @Autowired
-    SpendingsService spendingService;
+    SpendingService spendingService;
     @Autowired
-    IncomeTypeService incomeTypeService;
-    @Autowired
-    SpendingsTypeService spendingsTypeService;
+    TypeService typeService;
     @Autowired
     CalculationBean calculation;
     
     boolean isIncome;
-    ArrayList<Income> incomeList;
+    ArrayList<Finance> incomeList;
     Date startDate;
     Date endDate;
 
@@ -59,7 +56,7 @@ public class DataController {
         this.isIncome = isIncome;
     }
 
-    public void setIncomeList(ArrayList<Income> incomeList) {
+    public void setIncomeList(ArrayList<Finance> incomeList) {
         this.incomeList = incomeList;
     }
 
@@ -67,12 +64,12 @@ public class DataController {
         return isIncome;
     }
 
-    public ArrayList<Income> getIncomeList() {
+    public ArrayList<Finance> getIncomeList() {
         //if(isIncome){return income} esle {return spendings}
 
-        GregorianCalendar calendar = new GregorianCalendar(2016,02,10);
+        GregorianCalendar calendar = new GregorianCalendar(200,02,10);
         Date start = calendar.getTime();
-        GregorianCalendar calendar2 = new GregorianCalendar(2018,02,10);
+        GregorianCalendar calendar2 = new GregorianCalendar(2118,02,10);
         Date end = calendar2.getTime();
         return incomeService.getIncomeList(start, end);
     }

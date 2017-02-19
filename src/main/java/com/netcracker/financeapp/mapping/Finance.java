@@ -4,42 +4,42 @@ package com.netcracker.financeapp.mapping;
 
 import java.util.Date;
 
+public class Finance  implements java.io.Serializable {
 
-public class Spendings  implements java.io.Serializable {
-
-     private int idSpending;
-     private int type;
+     private int idFinance;
+     private int typeId;
      private int value;
      private String description;
      private Date date;
 
-    public Spendings() {
+    public Finance() {
+    }
+	
+    public Finance(int idFinance) {
+        this.idFinance = idFinance;
     }
 
-    public Spendings(int idSpending) {
-        this.idSpending = idSpending;
-    }
-    public Spendings(int idSpending, int type, int value, String description, Date date) {
-       this.idSpending = idSpending;
-       this.type = type;
+    public Finance(int idFinance, int typeId, int value, String description, Date date) {
+       this.idFinance = idFinance;
+       this.typeId = typeId;
        this.value = value;
        this.description = description;
        this.date = date;
     }
    
-    public int getIdSpending() {
-        return this.idSpending;
+    public int getIdFinance() {
+        return this.idFinance;
     }
     
-    public void setIdSpending(int idSpending) {
-        this.idSpending = idSpending;
+    public void setIdFinance(int idFinance) {
+        this.idFinance = idFinance;
     }
-    public int getType() {
-        return this.type;
+    public int getTypeId() {
+        return this.typeId;
     }
     
-    public void setType(int type) {
-        this.type = type;
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
     }
     public int getValue() {
         return this.value;

@@ -1,8 +1,8 @@
-
-import com.netcracker.financeapp.mapping.Income;
+/*
+import com.netcracker.financeapp.mapping.Finance;
 import com.netcracker.financeapp.mapping.Spendings;
 import com.netcracker.financeapp.service.IncomeService;
-import com.netcracker.financeapp.service.SpendingsService;
+import com.netcracker.financeapp.service.SpendingService;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -14,18 +14,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 @ContextConfiguration(locations={ "file:src/main/webapp/WEB-INF/application-context.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 @TestPropertySource({ "file:src/main/resources/webapp-derby.properties" })
 public class SpendingsTest {
     @Autowired
-    SpendingsService spendingsService;
+    SpendingService spendingsService;
    
     @Test
     public void testMaxSpendings(){
@@ -59,3 +53,4 @@ public class SpendingsTest {
         assertEquals(2, spendingsList.size());
     }
 }
+*/

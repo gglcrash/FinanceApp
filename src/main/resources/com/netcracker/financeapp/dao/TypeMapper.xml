@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.netcracker.financeapp.dao.TypeMapper">
+   
+    <resultMap id="typeMap" type="Type">
+        <id property="idType" column="id_type" javaType="int" jdbcType="INTEGER"/>
+        <result property="name"  column="name" javaType="String" jdbcType="VARCHAR"/>
+        <result property="idParent" column="id_parent" javaType="int" jdbcType="INTEGER"/>
+    </resultMap>
+ 
+    <select id="getTypeById" parameterType="int" resultType="Type">
+        select * from type where id_type = #{idType};
+    </select>
+    
+    <select id="getParentTypeByChildId" parameterType="int" resultType="Type">
+        select * from type where id_type=(select id_parent from type where id_type=#{idType});
+    </select>
+    
+    <select id="getTypeByName" parameterType="String" resultType="Type">
+        select * from type where name = #{typeName};
+    </select>
+    
+    <select id="getParentTypeByChildName" parameterType="String" resultType="Type">
+        select * from type where id_type=(select id_parent from type where name=#{typeName});
+    </select>
+    
+    <select id="getIncomeTypeNames" resultType="String">
+        select name from type where id_parent = (select id_type from type where name = 'INCOME');
+    </select>
+    
+    <select id="getSpedingTypeNames" resultType="String">
+        select name from type where id_parent = (select id_type from type where name = 'SPENDING');
+    </select>
+    
+    <select id="insertIncomeType" parameterType="String" resultType="int">
+        insert into type(name,id_parent) values(#{typeName},(select id_type from type 
+        where name = 'INCOME')) returning id;
+    </select>
+    
+    <select id="insertSpendingType" parameterType="String" resultType="int">
+        insert into type(name,id_parent) values(#{typeName},(select id_type from type 
+        where name = 'SPENDING')) returning id;
+    </select>
+    
+    
+</mapper>
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.netcracker.financeapp.dao.FinanceMapper">
+   
+    <resultMap id="financeMap" type="Finance">
+  <id property="idFinance" column="id_finance" javaType="int" jdbcType="INTEGER"/>
+  <result property="value"  column="value" javaType="int" jdbcType="INTEGER"/>
+  <result property="description"  column="description" javaType="String" jdbcType="VARCHAR"/>
+  <result property="date"  column="date" javaType="Date" jdbcType="TIMESTAMP"/>
+  <result property="typeId"  column="id_type" javaType="int" jdbcType="INTEGER"/>
+   </resultMap>
+
+    
+    <select id="getMaxIncome" resultType="Finance">
+        select * from finance where value = (select max(value) from finance) and 
+        id_type in (select id_type from type where id_parent = (select id_type from type 
+        where name='INCOME'));
+    </select>
+    
+    <select id="getMaxSpending" resultType="Finance">
+        select * from finance where value = (select max(value) from finance) and 
+        id_type in (select id_type from type where id_parent = (select id_type from type 
+        where name='SPENDING'));
+    </select>
+    
+    <select id="getAllIncomes" resultMap="financeMap">
+        select * from finance where date between #{startDate} and #{endDate} and 
+        id_type in (select id_type from type where id_parent = (select id_type from type 
+        where name='INCOME'));
+    </select>
+    
+    <select id="getAllSpendings" resultMap="financeMap">
+        select * from income where date between #{startDate} and #{endDate} and 
+        id_type in (select id_type from type where id_parent = (select id_type from type 
+        where name='SPENDING'));
+    </select>
+
+    <select id="getFinanceListByTypeName" parameterType="String" resultMap="financeMap">
+        select * from spending where id_type = (select id_type from type where name = 
+        #{typeName});
+    </select>
+    
+    <select id="insertFinance" resultType="int">
+        insert into finance(value,description,date,id_type) values(#{value},#{desc},
+        #{date}, #{idType}) returning id;
+    </select>
+    
+</mapper>

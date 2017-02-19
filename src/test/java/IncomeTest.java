@@ -1,4 +1,4 @@
-import com.netcracker.financeapp.mapping.Income;
+/*import com.netcracker.financeapp.mapping.Finance;
 import com.netcracker.financeapp.service.IncomeService;
 import java.util.ArrayList;
 import java.util.Date;
@@ -28,7 +28,7 @@ public class IncomeTest {
     
     @Test
     public void testIncomeList(){
-        ArrayList<Income> incomeList = incomeService.getAllIncomeListByTypeName("salary");
+        ArrayList<Finance> incomeList = incomeService.getAllIncomeListByTypeName("salary");
         assertEquals(5, incomeList.size());
     }
     
@@ -38,7 +38,7 @@ public class IncomeTest {
         Date start = startCalendar.getTime();
         GregorianCalendar endCalendar = new GregorianCalendar(2017,0,21);
         Date end = endCalendar.getTime();
-        ArrayList<Income> incomeList = incomeService.getIncomeList(start, end);
+        ArrayList<Finance> incomeList = incomeService.getIncomeList(start, end);
         assertEquals(3, incomeList.size());
     }
     
@@ -48,7 +48,8 @@ public class IncomeTest {
         Date start = startCalendar.getTime();
         GregorianCalendar endCalendar = new GregorianCalendar(2017,0,21);
         Date end = endCalendar.getTime();
-        ArrayList<Income> incomeList = incomeService.getIncomeListByTypeName(start, end,"salary");
+        ArrayList<Finance> incomeList = incomeService.getIncomeListByTypeName(start, end,"salary");
         assertEquals(5, incomeList.size());
     }
 }
+*/

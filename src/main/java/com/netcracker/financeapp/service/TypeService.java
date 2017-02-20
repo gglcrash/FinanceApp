@@ -42,5 +42,12 @@ public class TypeService {
     public ArrayList<String> getSpendingTypeNames() {
         return typeMapper.getSpendingTypeNames();
     }
-
+    
+    public int insertIncomeType(String typeName){
+        return typeMapper.insertIncomeType(typeName);
+    }
+    
+    public int insertSpendingType(String typeName){
+        return typeMapper.insertSpendingType(typeName);
+    }
 }

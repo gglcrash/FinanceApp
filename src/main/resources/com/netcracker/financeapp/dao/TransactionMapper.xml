@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.netcracker.financeapp.dao.TransactionMapper">
+   
+    <resultMap id="transactionMap" type="Transaction">
+        <id property="idTransaction" column="id_transaction" javaType="int" jdbcType="INTEGER"/>
+        <result property="idType" column="id_type" javaType="int" jdbcType="INTEGER"/>
+        <result property="idTypeState" column="id_type_state" javaType="int" jdbcType="INTEGER"/>
+        <result property="idAgent" column="id_agent" javaType="int" jdbcType="INTEGER"/>
+        <result property="idCard" column="id_card" javaType="int" jdbcType="INTEGER"/>
+        <result property="idFinance" column="id_finance" javaType="int" jdbcType="INTEGER"/>
+    </resultMap>
+ 
+    <select id="getTypeById" parameterType="int" resultType="Transaction">
+        select * from type where id_type = #{idType};
+    </select>
+    
+    <select id="getTransactionById" parameterType="int" resultType="Transaction">
+        select * from transaction where id_transaction=#{idTransaction};
+    </select>
+    
+    <select id="getTransactionByIdFinance" parameterType="int" resultType="Transaction">
+        select * from transaction where id_finance=#{idFinance};
+    </select>
+    
+    <select id="getTransacionsByIdType" parameterType="int" resultMap="transactionMap">
+        select * from transaction where id_type = #{idType};
+    </select>
+    
+    <select id="getTransacionsByIdTypeState" parameterType="int" resultMap="transactionMap">
+        select * from transaction where id_type_state = #{idTypeState};
+    </select>
+    
+    <select id="getTransacionsByIdAgent" parameterType="int" resultMap="transactionMap">
+        select * from transaction where id_agent = #{idAgent};
+    </select>
+    
+    <select id="getTransactionsByIdCard" parameterType="int" resultMap="transactionMap">
+        select * from transaction where id_card = #{idCard};
+    </select>
+    
+    <select id="getTransactionsByIdTypeAndIdCard" parameterType="int" resultMap="transactionMap">
+        select * from transaction where id_type = #{idType} and id_card = #{idCard};
+    </select>
+    
+    <select id="insertTransaction"  resultType="int">
+        insert into transaction(id_type,id_type_state,id_agent,id_card,id_finance) 
+        values(#{idType},#{idTypeState},#{idAgent},#{idCard},#{idFinance}) returning id;
+    </select>
+    
+    
+</mapper>
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.netcracker.financeapp.dao.BankCardMapper">
+
+    <resultMap id="bankCardMap" type="BankCard">
+        <id property="idCard" column="id_card" javaType="int" jdbcType="INTEGER"/>
+        <result property="amount"  column="amount" javaType="int" jdbcType="INTEGER"/>
+        <result property="cvv"  column="cvv" javaType="int" jdbcType="INTEGER"/>
+        <result property="expireMonth"  column="expire_month" javaType="int" jdbcType="INTEGER"/>
+        <result property="expireYear"  column="expire_year" javaType="int" jdbcType="INTEGER"/>
+        <result property="cardNumber"  column="card_number" javaType="String" jdbcType="VARCHAR"/>
+        <result property="ownerName"  column="owner_name" javaType="String" jdbcType="VARCHAR"/>
+        <result property="ownerSurname"  column="owner_surname" javaType="String" jdbcType="VARCHAR"/> 
+    </resultMap>
+ 
+    <select id="getBankCardByNumber" parameterType="String" resultType="BankCard">
+        select * from bank_card where number = #{cardNumber};
+    </select>
+    
+    <select id="getBankCardNumbers" resultType="String">
+        select card_number from bank_card;
+    </select>
+    
+    <select id="insertBankCard" resultType="int">
+        insert into bank_card(amount,cvv,expire_month,expire_year,card_number,owner_name,owner_surname) 
+        values(#{amount},#{cvv},#{expireMonth},#{expireYear},#{cardNumber},#{owenrName},#{ownerSurname})
+        returning id;
+    </select>
+       
+</mapper>
+

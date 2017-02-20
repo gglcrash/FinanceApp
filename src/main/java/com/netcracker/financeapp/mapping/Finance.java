@@ -1,6 +1,4 @@
 package com.netcracker.financeapp.mapping;
-// Generated Feb 11, 2017 12:29:32 PM by Hibernate Tools 4.3.1
-
 
 import java.util.Date;
 

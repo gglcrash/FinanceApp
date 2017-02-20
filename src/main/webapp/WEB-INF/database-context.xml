@@ -42,5 +42,30 @@
         <property name="spendingMapper" ref="financeMapper"/> 
     </bean>    
     
+    <bean id="agentMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.netcracker.financeapp.dao.AgentMapper" />
+        <property name="sqlSessionFactory" ref="sessionFactory" />
+    </bean>
+    
+    <bean id="agentService" class="com.netcracker.financeapp.service.AgentService">
+        <property name="agentMapper" ref="agentMapper"/> 
+    </bean> 
 
+    <bean id="bankCardMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.netcracker.financeapp.dao.BankCardMapper" />
+        <property name="sqlSessionFactory" ref="sessionFactory" />
+    </bean>
+    
+    <bean id="bankCardService" class="com.netcracker.financeapp.service.BankCardService">
+        <property name="bankCardMapper" ref="bankCardMapper"/> 
+    </bean> 
+    
+    <bean id="transactionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.netcracker.financeapp.dao.TransactionMapper" />
+        <property name="sqlSessionFactory" ref="sessionFactory" />
+    </bean>
+    
+    <bean id="transactionService" class="com.netcracker.financeapp.service.TransactionService">
+        <property name="transactionMapper" ref="transactionMapper"/> 
+    </bean> 
 </beans>

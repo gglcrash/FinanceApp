@@ -15,7 +15,7 @@ public class BankCardService {
 
     BankCardMapper bankCardMapper;
 
-    public void setAgentMapper(BankCardMapper bankCardMapper) {
+    public void setBankCardMapper(BankCardMapper bankCardMapper) {
         this.bankCardMapper = bankCardMapper;
     }
 

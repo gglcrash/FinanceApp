@@ -1,6 +1,5 @@
 package com.netcracker.financeapp.dao;
 
-import com.netcracker.financeapp.mapping.Agent;
 import com.netcracker.financeapp.mapping.BankCard;
 import java.util.ArrayList;
 import org.apache.ibatis.annotations.Param;

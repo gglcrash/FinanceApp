@@ -14,8 +14,8 @@
         <result property="ownerSurname"  column="owner_surname" javaType="String" jdbcType="VARCHAR"/> 
     </resultMap>
  
-    <select id="getBankCardByNumber" parameterType="String" resultType="BankCard">
-        select * from bank_card where number = #{cardNumber};
+    <select id="getBankCardByNumber" parameterType="String" resultMap="bankCardMap">
+        select * from bank_card where card_number = #{cardNumber};
     </select>
     
     <select id="getBankCardNumbers" resultType="String">

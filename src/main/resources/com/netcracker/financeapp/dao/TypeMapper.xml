@@ -9,28 +9,24 @@
         <result property="idParent" column="id_parent" javaType="int" jdbcType="INTEGER"/>
     </resultMap>
  
-    <select id="getTypeById" parameterType="int" resultType="Type">
+    <select id="getTypeById" parameterType="int" resultMap="typeMap">
         select * from type where id_type = #{idType};
     </select>
     
-    <select id="getParentTypeByChildId" parameterType="int" resultType="Type">
+    <select id="getParentTypeByChildId" parameterType="int" resultMap="typeMap">
         select * from type where id_type=(select id_parent from type where id_type=#{idType});
     </select>
     
-    <select id="getTypeByName" parameterType="String" resultType="Type">
+    <select id="getTypeByName" parameterType="String" resultMap="typeMap">
         select * from type where name = #{typeName};
     </select>
     
-    <select id="getParentTypeByChildName" parameterType="String" resultType="Type">
+    <select id="getParentTypeByChildName" parameterType="String" resultMap="typeMap">
         select * from type where id_type=(select id_parent from type where name=#{typeName});
     </select>
     
     <select id="getIncomeTypeNames" resultType="String">
         select name from type where id_parent = (select id_type from type where name = 'INCOME');
-    </select>
-    
-    <select id="getSpedingTypeNames" resultType="String">
-        select name from type where id_parent = (select id_type from type where name = 'SPENDING');
     </select>
     
     <select id="insertIncomeType" parameterType="String" resultType="int">
@@ -43,6 +39,8 @@
         where name = 'SPENDING')) returning id;
     </select>
     
-    
+    <select id="getSpedingTypeNames" resultType="String">
+        select name from type where id_parent = (select id_type from type where name = 'SPENDING');
+    </select>
 </mapper>
 

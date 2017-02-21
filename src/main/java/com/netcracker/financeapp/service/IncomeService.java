@@ -24,7 +24,7 @@ public class IncomeService {
         return tmp;
     }
     
-    public Finance getMaxIncome(){
+    public int getMaxIncome(){
         return financeMapper.getMaxIncome();
     }
     

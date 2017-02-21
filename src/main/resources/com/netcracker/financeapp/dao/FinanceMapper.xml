@@ -12,14 +12,14 @@
    </resultMap>
 
     
-    <select id="getMaxIncome" resultType="Finance">
-        select * from finance where value = (select max(value) from finance) and 
+    <select id="getMaxIncome" resultType="int">
+        select max(value) from finance where 
         id_type in (select id_type from type where id_parent = (select id_type from type 
         where name='INCOME'));
     </select>
     
-    <select id="getMaxSpending" resultType="Finance">
-        select * from finance where value = (select max(value) from finance) and 
+    <select id="getMaxSpending" resultType="int">
+        select max(value) from finance where 
         id_type in (select id_type from type where id_parent = (select id_type from type 
         where name='SPENDING'));
     </select>
@@ -31,13 +31,13 @@
     </select>
     
     <select id="getAllSpendings" resultMap="financeMap">
-        select * from income where date between #{startDate} and #{endDate} and 
+        select * from finance where date between #{startDate} and #{endDate} and 
         id_type in (select id_type from type where id_parent = (select id_type from type 
         where name='SPENDING'));
     </select>
 
-    <select id="getFinanceListByTypeName" parameterType="String" resultMap="financeMap">
-        select * from spending where id_type = (select id_type from type where name = 
+    <select id="getFinanceListByTypeName" resultMap="financeMap">
+        select * from finance where date between #{startDate} and #{endDate} and id_type = (select id_type from type where name = 
         #{typeName});
     </select>
     

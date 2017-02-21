@@ -38,11 +38,11 @@ public class TypeService {
     public ArrayList<String> getIncomeTypeNames() {
         return typeMapper.getIncomeTypeNames();
     }
-
-    public ArrayList<String> getSpendingTypeNames() {
-        return typeMapper.getSpendingTypeNames();
-    }
     
+    public ArrayList<String> getSpendingTypeNames() {
+        return typeMapper.getIncomeTypeNames();
+    }
+
     public int insertIncomeType(String typeName){
         return typeMapper.insertIncomeType(typeName);
     }

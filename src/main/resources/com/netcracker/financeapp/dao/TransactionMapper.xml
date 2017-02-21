@@ -17,35 +17,35 @@
     </select>
     
     <select id="getTransactionById" parameterType="int" resultType="Transaction">
-        select * from transaction where id_transaction=#{idTransaction};
+        select * from "transaction" where id_transaction=#{idTransaction};
     </select>
     
     <select id="getTransactionByIdFinance" parameterType="int" resultType="Transaction">
-        select * from transaction where id_finance=#{idFinance};
+        select * from "transaction" where id_finance=#{idFinance};
     </select>
     
-    <select id="getTransacionsByIdType" parameterType="int" resultMap="transactionMap">
-        select * from transaction where id_type = #{idType};
+    <select id="getTransactionsByIdType" parameterType="int" resultMap="transactionMap">
+        select * from "transaction" where id_type = #{idType};
     </select>
     
     <select id="getTransacionsByIdTypeState" parameterType="int" resultMap="transactionMap">
-        select * from transaction where id_type_state = #{idTypeState};
+        select * from "transaction" where id_type_state = #{idTypeState};
     </select>
     
     <select id="getTransacionsByIdAgent" parameterType="int" resultMap="transactionMap">
-        select * from transaction where id_agent = #{idAgent};
+        select * from "transaction" where id_agent = #{idAgent};
     </select>
     
     <select id="getTransactionsByIdCard" parameterType="int" resultMap="transactionMap">
-        select * from transaction where id_card = #{idCard};
+        select * from "transaction" where id_card = #{idCard};
     </select>
     
-    <select id="getTransactionsByIdTypeAndIdCard" parameterType="int" resultMap="transactionMap">
-        select * from transaction where id_type = #{idType} and id_card = #{idCard};
+    <select id="getTransactionsByIdTypeAndIdCard"  resultMap="transactionMap">
+        select * from "transaction" where id_type = #{idType} and id_card = #{idCard};
     </select>
     
     <select id="insertTransaction"  resultType="int">
-        insert into transaction(id_type,id_type_state,id_agent,id_card,id_finance) 
+        insert into "transaction"(id_type,id_type_state,id_agent,id_card,id_finance) 
         values(#{idType},#{idTypeState},#{idAgent},#{idCard},#{idFinance}) returning id;
     </select>
     

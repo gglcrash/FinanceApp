@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 public interface AgentMapper {
 
-    Agent getAgentByName(String agentName);
+    String getAgentNumberByName(String agentName);
 
     ArrayList<String> getAgentNames();
     

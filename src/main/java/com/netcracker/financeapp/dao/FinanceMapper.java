@@ -19,12 +19,12 @@ public interface FinanceMapper {
             @Param("date") Date date, @Param("idType") int idType);
 
     
-    Finance getMaxIncome();
+    int getMaxIncome();
 
     ArrayList<Finance> getAllIncomes(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 
     
-    Finance getMaxSpending();
+    int getMaxSpending();
 
     ArrayList<Finance> getAllSpendings(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 

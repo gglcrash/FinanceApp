@@ -9,8 +9,8 @@
         <result property="accountNumber"  column="account_number" javaType="String" jdbcType="VARCHAR"/>
     </resultMap>
  
-    <select id="getAgentByName" parameterType="String" resultType="Agent">
-        select * from agent where name = #{agentName};
+    <select id="getAgentNumberByName" parameterType="String" resultType="String">
+        select account_number from agent where name = #{agentName};
     </select>
     
     <select id="getAgentNames" resultType="String">

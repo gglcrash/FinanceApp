@@ -7,7 +7,7 @@ public class Transaction  implements java.io.Serializable {
      private int idTypeState;
      private int idAgent;
      private int idCard;
-     private int ifFinance;
+     private int idFinance;
 
     public Transaction() {
     }
@@ -17,7 +17,7 @@ public class Transaction  implements java.io.Serializable {
         this.idTypeState = idTypeState;
         this.idAgent = idAgent;
         this.idCard = idCard;
-        this.ifFinance = ifFinance;
+        this.idFinance = ifFinance;
     }
 
     public int getIdTransaction() {
@@ -40,8 +40,8 @@ public class Transaction  implements java.io.Serializable {
         return idCard;
     }
 
-    public int getIfFinance() {
-        return ifFinance;
+    public int getIdFinance() {
+        return idFinance;
     }
 
     public void setIdTransaction(int idTransaction) {
@@ -64,8 +64,8 @@ public class Transaction  implements java.io.Serializable {
         this.idCard = idCard;
     }
 
-    public void setIfFinance(int ifFinance) {
-        this.ifFinance = ifFinance;
+    public void setIdFinance(int ifFinance) {
+        this.idFinance = ifFinance;
     }
      
    

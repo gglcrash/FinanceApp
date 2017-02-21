@@ -8,6 +8,7 @@ package com.netcracker.financeapp.dao;
 import com.netcracker.financeapp.mapping.Transaction;
 import com.netcracker.financeapp.mapping.Type;
 import java.util.ArrayList;
+import org.apache.ibatis.annotations.Param;
 
 
 public interface TransactionMapper {
@@ -24,7 +25,8 @@ public interface TransactionMapper {
 
     ArrayList<Transaction> getTransactionsByIdCard(int idCard);
 
-    ArrayList<Transaction> getTransactionsByIdTypeAndIdCard(int idType, int idCard);
+    ArrayList<Transaction> getTransactionsByIdTypeAndIdCard(@Param("idType") int idType, 
+            @Param("idCard") int idCard);
 
     int insertTransaction(int idType, int idTypeState, int idAgent, int idCard, int idFinance);
 }

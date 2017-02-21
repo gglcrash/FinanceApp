@@ -19,8 +19,8 @@ public class AgentService {
         this.agentMapper = agentMapper;
     }
 
-    public Agent getAgentByName(String agentName) {
-        return agentMapper.getAgentByName(agentName);
+    public String getAgentNumberByName(String agentName) {
+        return agentMapper.getAgentNumberByName(agentName);
     }
 
     public ArrayList<String> getAgentNames() {

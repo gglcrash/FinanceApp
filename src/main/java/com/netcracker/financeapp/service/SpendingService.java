@@ -23,7 +23,7 @@ public class SpendingService {
         return tmp;
     }
     
-    public Finance getMaxSpending(){
+    public int getMaxSpending(){
         return financeMapper.getMaxSpending();
     }
    

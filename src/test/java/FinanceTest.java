@@ -16,14 +16,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/application-context.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 @TestPropertySource({"file:src/main/resources/webapp-derby.properties"})
-
+//@TestPropertySource({"classpath:webapp-derby.properties"})
 public class FinanceTest {
 
     @Autowired
     IncomeService incomeService;
     @Autowired
     SpendingService spendingService;
-
+/*
     @Test
     public void testMaxIncome() {
         int maxIncome = incomeService.getMaxIncome();
@@ -75,5 +75,5 @@ public class FinanceTest {
         ArrayList<Finance> spendingList = spendingService.getSpendingsList(start, end);
         assertEquals(4, spendingList.size());
     }
-    
+    */
 }

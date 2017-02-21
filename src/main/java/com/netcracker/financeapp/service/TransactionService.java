@@ -31,10 +31,6 @@ public class TransactionService {
         return transactionMapper.getTransactionsByIdType(idType);
     }
 
-    public ArrayList<Transaction> getTransactionsByIdTypeState(int idTypeState) {
-        return transactionMapper.getTransactionsByIdTypeState(idTypeState);
-    }
-
     public ArrayList<Transaction> getTransactionsByIdAgent(int idAgent) {
         return transactionMapper.getTransactionsByIdAgent(idAgent);
     }

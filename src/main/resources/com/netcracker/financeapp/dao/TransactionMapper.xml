@@ -28,10 +28,6 @@
         select * from "transaction" where id_type = #{idType};
     </select>
     
-    <select id="getTransacionsByIdTypeState" parameterType="int" resultMap="transactionMap">
-        select * from "transaction" where id_type_state = #{idTypeState};
-    </select>
-    
     <select id="getTransacionsByIdAgent" parameterType="int" resultMap="transactionMap">
         select * from "transaction" where id_agent = #{idAgent};
     </select>

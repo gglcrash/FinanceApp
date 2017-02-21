@@ -1,14 +1,7 @@
 
-import com.netcracker.financeapp.mapping.Agent;
 import com.netcracker.financeapp.mapping.BankCard;
-import com.netcracker.financeapp.mapping.Finance;
-import com.netcracker.financeapp.service.AgentService;
 import com.netcracker.financeapp.service.BankCardService;
-import com.netcracker.financeapp.service.IncomeService;
-import com.netcracker.financeapp.service.SpendingService;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import static junit.framework.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/application-context.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 @TestPropertySource({"file:src/main/resources/webapp-derby.properties"})
-
+//@TestPropertySource({"classpath:webapp-derby.properties"})
 public class BankCardTest {
     @Autowired
     BankCardService bankCardService;
@@ -30,10 +23,11 @@ public class BankCardTest {
         BankCard bankCard = bankCardService.getBankCardByNumber("1234 1234 1234 1234");
         assertEquals("ARTEM",bankCard.getOwnerName());
     }
-
+/*
     @Test
     public void testGetBankCardList() {
         ArrayList<String> cardList = bankCardService.getBankCardNumbers();
         assertEquals(2, cardList.size());
     }
+*/
 }

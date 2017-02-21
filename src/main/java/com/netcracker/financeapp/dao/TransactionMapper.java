@@ -19,8 +19,6 @@ public interface TransactionMapper {
     
     ArrayList<Transaction> getTransactionsByIdType(int idType);
 
-    ArrayList<Transaction> getTransactionsByIdTypeState(int idTypeState);
-
     ArrayList<Transaction> getTransactionsByIdAgent(int idAgent);
 
     ArrayList<Transaction> getTransactionsByIdCard(int idCard);

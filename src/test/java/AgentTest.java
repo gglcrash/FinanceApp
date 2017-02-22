@@ -2,6 +2,7 @@
 import com.netcracker.financeapp.service.AgentService;
 import java.util.ArrayList;
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +20,14 @@ public class AgentTest {
     
     @Test
     public void testGetAgentByName() {
-        String agentNumber = agentService.getAgentNumberByName("SPORTLOTO");
+        String agentNumber = agentService.getAgentByName("SPORTLOTO").getAccountNumber();
         assertEquals("987654321",agentNumber);
     }
-/*
+
     @Test
     public void testGetAgentNamesList() {
         ArrayList<String> agentList = agentService.getAgentNames();
-        assertEquals(4, agentList.size());
+        assertTrue(agentList.size()>0);
     }
-*/
+
 }

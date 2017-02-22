@@ -9,8 +9,8 @@
         <result property="accountNumber"  column="account_number" javaType="String" jdbcType="VARCHAR"/>
     </resultMap>
  
-    <select id="getAgentNumberByName" parameterType="String" resultType="String">
-        select account_number from agent where name = #{agentName};
+    <select id="getAgentByName" parameterType="String" resultMap="agentMap">
+        select * from agent where name = #{agentName};
     </select>
     
     <select id="getAgentNames" resultType="String">
@@ -18,7 +18,7 @@
     </select>
     
     <select id="insertAgent" resultType="int">
-        insert into agent(name,account_number) values(#{agentName},#{accountNumber}) returning id;
+        insert into agent(name,account_number) values(#{agentName},#{accountNumber}) returning id_agent;
     </select>
     
     

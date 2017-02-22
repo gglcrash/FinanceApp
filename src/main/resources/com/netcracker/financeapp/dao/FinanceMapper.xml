@@ -43,7 +43,7 @@
     
     <select id="insertFinance" resultType="int">
         insert into finance(value,description,date,id_type) values(#{value},#{desc},
-        #{date}, #{idType}) returning id;
+        #{date}, #{idType}) returning id_finance;
     </select>
     
 </mapper>

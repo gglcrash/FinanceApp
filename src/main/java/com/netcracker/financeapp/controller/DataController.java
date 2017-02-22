@@ -6,9 +6,13 @@
 package com.netcracker.financeapp.controller;
 
 import com.netcracker.financeapp.beans.CalculationBean;
+import com.netcracker.financeapp.beans.DataBean;
 import com.netcracker.financeapp.mapping.Finance;
+import com.netcracker.financeapp.service.AgentService;
+import com.netcracker.financeapp.service.BankCardService;
 import com.netcracker.financeapp.service.IncomeService;
 import com.netcracker.financeapp.service.SpendingService;
+import com.netcracker.financeapp.service.TransactionService;
 import com.netcracker.financeapp.service.TypeService;
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,6 +26,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 @Scope("request")
 public class DataController {
+
     @Autowired
     IncomeService incomeService;
     @Autowired
@@ -29,8 +34,16 @@ public class DataController {
     @Autowired
     TypeService typeService;
     @Autowired
+    BankCardService bankCardService;
+    @Autowired
+    TransactionService transactionService;
+    @Autowired
+    AgentService agentService;
+    @Autowired
     CalculationBean calculation;
-    
+    @Autowired
+    DataBean dataBean;
+
     boolean isIncome;
     ArrayList<Finance> incomeList;
     Date startDate;
@@ -51,7 +64,7 @@ public class DataController {
     public Date getEndDate() {
         return endDate;
     }
-      
+
     public void setIsIncome(boolean isIncome) {
         this.isIncome = isIncome;
     }
@@ -67,15 +80,23 @@ public class DataController {
     public ArrayList<Finance> getIncomeList() {
         //if(isIncome){return income} esle {return spendings}
 
-        GregorianCalendar calendar = new GregorianCalendar(200,02,10);
+        GregorianCalendar calendar = new GregorianCalendar(200, 02, 10);
         Date start = calendar.getTime();
-        GregorianCalendar calendar2 = new GregorianCalendar(2118,02,10);
+        GregorianCalendar calendar2 = new GregorianCalendar(2118, 02, 10);
         Date end = calendar2.getTime();
         return incomeService.getIncomeList(start, end);
     }
-    
-    public int getSaldo(){
+
+    public int getSaldo() {
         return calculation.calculateSaldo(incomeService.getIncomeList(startDate, endDate),
                 spendingService.getSpendingsList(startDate, endDate));
+    }
+
+    public String insertData(int value, String description, Date insertDate, String typeName) {
+
+     /*   GregorianCalendar calendar = new GregorianCalendar(2020, 11, 25);
+        Date insertDate = calendar.getTime();
+       */ 
+        return dataBean.insertIncome(20000, description, insertDate, typeName);
     }
 }

@@ -42,7 +42,7 @@
     
     <select id="insertTransaction"  resultType="int">
         insert into "transaction"(id_type,id_type_state,id_agent,id_card,id_finance) 
-        values(#{idType},#{idTypeState},#{idAgent},#{idCard},#{idFinance}) returning id;
+        values(#{idType},#{idTypeState},#{idAgent},#{idCard},#{idFinance}) returning id_transaction;
     </select>
     
     

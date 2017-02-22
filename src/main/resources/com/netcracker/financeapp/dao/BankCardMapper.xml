@@ -25,7 +25,7 @@
     <select id="insertBankCard" resultType="int">
         insert into bank_card(amount,cvv,expire_month,expire_year,card_number,owner_name,owner_surname) 
         values(#{amount},#{cvv},#{expireMonth},#{expireYear},#{cardNumber},#{owenrName},#{ownerSurname})
-        returning id;
+        returning id-card;
     </select>
        
 </mapper>

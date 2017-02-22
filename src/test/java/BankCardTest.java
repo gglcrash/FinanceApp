@@ -3,6 +3,7 @@ import com.netcracker.financeapp.mapping.BankCard;
 import com.netcracker.financeapp.service.BankCardService;
 import java.util.ArrayList;
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +24,11 @@ public class BankCardTest {
         BankCard bankCard = bankCardService.getBankCardByNumber("1234 1234 1234 1234");
         assertEquals("ARTEM",bankCard.getOwnerName());
     }
-/*
+
     @Test
     public void testGetBankCardList() {
         ArrayList<String> cardList = bankCardService.getBankCardNumbers();
-        assertEquals(2, cardList.size());
+        assertTrue(cardList.size()>0);
     }
-*/
+
 }

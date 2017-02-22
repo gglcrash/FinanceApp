@@ -31,12 +31,12 @@
     
     <select id="insertIncomeType" parameterType="String" resultType="int">
         insert into type(name,id_parent) values(#{typeName},(select id_type from type 
-        where name = 'INCOME')) returning id;
+        where name = 'INCOME')) returning id_type;
     </select>
     
     <select id="insertSpendingType" parameterType="String" resultType="int">
         insert into type(name,id_parent) values(#{typeName},(select id_type from type 
-        where name = 'SPENDING')) returning id;
+        where name = 'SPENDING')) returning id_type;
     </select>
     
     <select id="getSpedingTypeNames" resultType="String">

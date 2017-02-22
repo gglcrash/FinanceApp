@@ -26,5 +26,6 @@ public interface TransactionMapper {
     ArrayList<Transaction> getTransactionsByIdTypeAndIdCard(@Param("idType") int idType, 
             @Param("idCard") int idCard);
 
-    int insertTransaction(int idType, int idTypeState, int idAgent, int idCard, int idFinance);
+    int insertTransaction(@Param("idType") int idType,@Param("idTypeState") int idTypeState,
+            @Param("idAgent") int idAgent,@Param("idCard") int idCard,@Param("idFinance") int idFinance);
 }

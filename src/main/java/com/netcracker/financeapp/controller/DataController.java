@@ -17,16 +17,19 @@ import com.netcracker.financeapp.service.TypeService;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-@ManagedBean(name = "dataController")
-@Controller
-@Scope("request")
-public class DataController {
-
+@Controller("dataController")
+public class DataController extends HttpServlet{
     @Autowired
     IncomeService incomeService;
     @Autowired
@@ -49,6 +52,8 @@ public class DataController {
     Date startDate;
     Date endDate;
 
+    
+    
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
@@ -98,5 +103,14 @@ public class DataController {
         Date insertDate = calendar.getTime();
        */ 
         return dataBean.insertIncome(20000, description, insertDate, typeName);
+    }
+    ArrayList<String> incomeTypeList;
+    public ArrayList<String> getIncomeTypeList(){   
+     incomeTypeList = typeService.getIncomeTypeNames();
+   /*  incomeTypeList = new ArrayList<>();
+     incomeTypeList.add("first");
+     incomeTypeList.add("second");
+     incomeTypeList.add("third");*/
+     return incomeTypeList;
     }
 }

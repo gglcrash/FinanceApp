@@ -20,11 +20,11 @@
         <table>
             <tr valign='top'><td><%@include file='/templates/sidebar.jsp'%></td>
                 <td>
-                    <form action="main" method="post">
+                    <form action="${pageContext.request.contextPath}/incomeServlet" method="post">
                         <table>
                             <tr>
                                 <td><p>Income Type:</p></td>
-                                <td><select name="incomeType">
+                                <td><select name="incomeType" id="incomeType">
                                         <c:forEach items="${incomeTypeList}" var="incomeTypeValue">
                                             <option value="${incomeTypeValue}">
                                                 ${incomeTypeValue}
@@ -35,18 +35,18 @@
                             </tr>
                             <tr>
                                 <td><p>Value: </p></td> 
-                                <td><input type="text" name="value"></td>
+                                <td><input type="text" id="value" name="value"/></td>
                             </tr>
                             <tr>
                                 <td><p>Date: </p></td>
-                                <td><input type="text" id="datepicker" name="date"></td>
+                                <td><input type="text" id="datepicker" name="date"/></td>
                             </tr>
                             <tr>
                                 <td><p>Description: </p></td> 
-                                <td><input type="text" name="description"> </br></td>
+                                <td><input type="text" id="description" name="description"/> </br></td>
                             </tr>
                             <tr>
-                                <td><input type="submit" value="Submit" /></td>
+                                <td><input type="submit" name = "submit" value="Submit" /></td>
                             </tr>
 
                         </table>

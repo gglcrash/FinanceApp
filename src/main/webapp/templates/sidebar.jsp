@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-
     </head>
     <body>
         <a href="templates/sidebar.jsp"> Bank Cards </a></br>

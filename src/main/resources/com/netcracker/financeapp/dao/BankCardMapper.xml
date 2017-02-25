@@ -22,6 +22,10 @@
         select card_number from bank_card;
     </select>
     
+    <select id="getAllMoney" resultType="int">
+        select amount from bank_card;
+    </select>
+    
     <select id="insertBankCard" resultType="int">
         insert into bank_card(amount,cvv,expire_month,expire_year,card_number,owner_name,owner_surname) 
         values(#{amount},#{cvv},#{expireMonth},#{expireYear},#{cardNumber},#{owenrName},#{ownerSurname})

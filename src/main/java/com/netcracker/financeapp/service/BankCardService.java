@@ -32,4 +32,13 @@ public class BankCardService {
         return bankCardMapper.insertBankCard(amount,cvv,expireMonth,expireYear,cardNumber, 
                 ownerName, ownerSurname);
     }
+    
+    public int getAllMoney(){
+        ArrayList<Integer> allMoneyList = bankCardMapper.getAllMoney();
+        int allMoney = 0;
+        for(int oneCardMoney : allMoneyList){
+            allMoney+=oneCardMoney;
+        }
+        return allMoney;
+    }
 }

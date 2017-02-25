@@ -5,6 +5,7 @@
  */
 package com.netcracker.financeapp.controller;
 
+import com.netcracker.financeapp.service.BankCardService;
 import com.netcracker.financeapp.service.IncomeService;
 import com.netcracker.financeapp.service.TypeService;
 import java.io.IOException;
@@ -25,18 +26,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-/**
- *
- * @author gglcrash
- */
-@WebServlet(name = "incomeServlet", urlPatterns = {"/incomeServlet"})
-public class IncomeServlet extends HttpServlet {
+@WebServlet(name = "bankCardServlet", urlPatterns = {"/bankCardServlet"})
+public class BankCardServlet extends HttpServlet {
 
     @Autowired
-    TypeService typeService;
-    @Autowired
-    IncomeService incomeService;
-
+    BankCardService bankCardService;
+    
     @Override
     public void init(ServletConfig config) {
         try {
@@ -44,17 +39,15 @@ public class IncomeServlet extends HttpServlet {
             SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,
                     config.getServletContext());
         } catch (ServletException ex) {
-            Logger.getLogger(IncomeServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BankCardServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ArrayList<String> incomeTypeList = typeService.getIncomeTypeNames();
-
-        request.setAttribute("incomeTypeList", incomeTypeList);
-        request.getRequestDispatcher("incomePage.jsp").forward(request, response);
+        //request.setAttribute("incomeTypeList", incomeTypeList);
+        request.getRequestDispatcher("bankCardPage.jsp").forward(request, response);
 
     }
 
@@ -63,24 +56,8 @@ public class IncomeServlet extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
         Map<String, String[]> map = request.getParameterMap();
 
-        int value = Integer.parseInt(request.getParameter("value"));
+        int value = Integer.parseInt(request.getParameter("currentAmount"));
 
-        Date date = null;
-        try {
-            DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-            date = dateFormat.parse(request.getParameter("date"));
-        } catch (ParseException ex) {
-            Logger.getLogger(IncomeServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        String description = request.getParameter("description");
-        String typeName = request.getParameter("incomeType");
-
-        int typeId = typeService.getTypeByName(typeName).getIdType();
-
-        int x = incomeService.insertIncome(value, description, date, typeId);
-        if (x > 0) {
-            request.getRequestDispatcher("templates/sidebar.jsp").forward(request, response);
-        }
     }
 
 }

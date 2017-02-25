@@ -14,4 +14,6 @@ public interface BankCardMapper {
             int expireMonth, @Param("expireYear") int expireYear, @Param("cardNumber") 
                     String cardNumber, @Param("ownerName") int ownerName, 
                     @Param("ownerSurname") int ownerSurname);
+    
+    ArrayList<Integer> getAllMoney();
 }

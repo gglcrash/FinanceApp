@@ -4,9 +4,9 @@
     <head>
     </head>
     <body>
-        <a href="templates/sidebar.jsp"> Bank Cards </a></br>
-        <a href="templates/sidebar.jsp"> Transactions </a></br>
-        <a href="templates/sidebar.jsp"> Add Income </a></br>
-        <a href="templates/sidebar.jsp"> Add Spending </a></br>
+        <a href="${pageContext.request.contextPath}/bankCardServlet"> Bank Cards </a></br>
+        <a href="${pageContext.request.contextPath}/transactionsServlet"> Transactions </a></br>
+        <a href="${pageContext.request.contextPath}/incomeServlet"> Add Income </a></br>
+        <a href="${pageContext.request.contextPath}/spendingServlet"> Add Spending </a></br>
     </body>
 </html>

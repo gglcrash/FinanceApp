@@ -46,7 +46,6 @@ public class BankCardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //request.setAttribute("incomeTypeList", incomeTypeList);
         request.getRequestDispatcher("bankCardPage.jsp").forward(request, response);
 
     }
@@ -54,10 +53,21 @@ public class BankCardServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-        Map<String, String[]> map = request.getParameterMap();
-
-        int value = Integer.parseInt(request.getParameter("currentAmount"));
-
+        String cardNumber = request.getParameter("cardNumber"); 
+        int amount = Integer.parseInt(request.getParameter("currentAmount")); 
+        int cvv = Integer.parseInt(request.getParameter("cvv"));
+        String ownerName = request.getParameter("ownerName");
+        String ownerSurname = request.getParameter("ownerSurname");
+        int expireMonth = Integer.parseInt(request.getParameter("expireMonth"));
+        int expireYear = Integer.parseInt(request.getParameter("expireYear"));
+        
+        int cardId = bankCardService.insertBankCard(amount, cvv, expireMonth, expireYear, cardNumber, 
+                ownerName, ownerSurname);
+        if(cardId>0){
+              request.getRequestDispatcher("templates/success.jsp").forward(request, response);
+        } else {
+           request.getRequestDispatcher("templates/error.jsp").forward(request, response); 
+        }
     }
 
 }

@@ -28,7 +28,7 @@ public class BankCardService {
     }
 
     public int insertBankCard(int amount,int cvv,int expireMonth,int expireYear,
-            String cardNumber, int ownerName, int ownerSurname){
+            String cardNumber, String ownerName, String ownerSurname){
         return bankCardMapper.insertBankCard(amount,cvv,expireMonth,expireYear,cardNumber, 
                 ownerName, ownerSurname);
     }
@@ -40,5 +40,9 @@ public class BankCardService {
             allMoney+=oneCardMoney;
         }
         return allMoney;
+    }
+    
+    public int editCardAmount(int cardId, int newAmount){
+        return bankCardMapper.editCardAmount(cardId, newAmount);
     }
 }

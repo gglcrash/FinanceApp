@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Add Income</title>
+        <title>Add Spending</title>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="/resources/demos/style.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -21,16 +21,16 @@
             <tr valign='top'><td><%@include file='/templates/sidebar.jsp'%></td>
                 <td>
             <center>
-                <p><h2>Insert new income:</h2></p>
+                <p><h2>Insert new spending:</h2></p>
             </center>
-            <form action="${pageContext.request.contextPath}/incomeServlet" method="post">
+            <form action="${pageContext.request.contextPath}/spendingServlet" method="post">
                 <table>
                     <tr>
                         <td><p>Income Type:</p></td>
-                        <td><select name="incomeType" id="incomeType">
-                                <c:forEach items="${incomeTypeList}" var="incomeTypeValue">
-                                    <option value="${incomeTypeValue}">
-                                        ${incomeTypeValue}
+                        <td><select name="spendingType" id="spendingType">
+                                <c:forEach items="${spendingTypeList}" var="spendingTypeValue">
+                                    <option value="${spendingTypeValue}">
+                                        ${spendingTypeValue}
                                     </option>
                                 </c:forEach>
                             </select> </td>
@@ -57,7 +57,7 @@
                                     </option>
                                 </c:forEach>
                             </select> </td>
-                            
+
                         <td><a href="templates/sidebar.jsp"> Add New</a></td>
                     </tr>
                     <tr>
@@ -69,7 +69,7 @@
                                     </option>
                                 </c:forEach>
                             </select> </td>
-                            
+
                         <td><a href="templates/sidebar.jsp"> Add New</a></td>
                     </tr>
                     <tr>

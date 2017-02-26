@@ -58,7 +58,7 @@
                                 </c:forEach>
                             </select> </td>
                             
-                        <td><a href="templates/sidebar.jsp"> Add New</a></td>
+                        <td><a href="${pageContext.request.contextPath}/agentAddServlet"> Add New</a></td>
                     </tr>
                     <tr>
                         <td><p>To:</p></td>
@@ -70,7 +70,7 @@
                                 </c:forEach>
                             </select> </td>
                             
-                        <td><a href="templates/sidebar.jsp"> Add New</a></td>
+                        <td><a href="${pageContext.request.contextPath}/bankCardAddServlet"> Add New</a></td>
                     </tr>
                     <tr>
                         <td><input type="submit" name = "submit" value="Submit" /></td>

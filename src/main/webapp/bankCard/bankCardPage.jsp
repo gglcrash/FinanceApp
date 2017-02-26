@@ -11,13 +11,13 @@
         <table>
             <tr valign='top'><td><%@include file='/templates/sidebar.jsp'%></td>
                 <td>
-                    <form action="${pageContext.request.contextPath}/bankCardServlet" method="post">
+                    <form action="${pageContext.request.contextPath}/bankCardServlet" 
+                          method="get">
                         <table>
                             <tr>
-                                <td><p>To:</p></td>
+                                <td><p>Bank Card:</p></td>
                                 <td><select name="cardListVal" id="cardList"
-                                            onchange="${pageContext.request.contextPath}/bankCardServlet"
-                                            method="get">
+                                            onchange="this.form.submit();">
                                         <c:forEach items="${cardList}" var="cardValue">
                                             <option value="${cardValue}">
                                                 ${cardValue}
@@ -25,8 +25,7 @@
                                         </c:forEach>
                                     </select> </td>
                                 <td> <a href="${pageContext.request.contextPath}/bankCardAddServlet"> Add New Card </a></td>
-                                <td><input type="submit" name = "submit" value="Delete" /></td>
-                            </tr>
+                                </tr>
 
                             <tr>
                                 <td><p>Card Number: </p></td> 

@@ -51,10 +51,8 @@ public class BankCardServlet extends HttpServlet {
         request.setAttribute("cardList", bankCardNumbers);
 
         String currentCard = request.getParameter("cardListVal");
-        if (currentCard == null) {
-            currentCard = bankCardNumbers.get(0);
-        }
-
+        if (currentCard != null && currentCard!="Select Card") {
+           
         BankCard currCard = bankCardService.getBankCardByNumber(currentCard);
         request.setAttribute("cardNumber", currCard.getCardNumber());
         request.setAttribute("currentAmount", currCard.getAmount());
@@ -63,7 +61,8 @@ public class BankCardServlet extends HttpServlet {
         request.setAttribute("expireMonth", currCard.getExpireMonth());
         request.setAttribute("expireYear", currCard.getExpireYear());
         request.setAttribute("cvv", currCard.getCvv());
-
+        }
+        request.setAttribute("clearCard", "Select Card");
         request.getRequestDispatcher("bankCard/bankCardPage.jsp").forward(request, response);
 
     }

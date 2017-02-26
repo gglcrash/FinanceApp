@@ -67,7 +67,7 @@ public class IncomeServlet extends HttpServlet {
         ArrayList<String> agentNames = agentService.getAgentNames();
         request.setAttribute("fromList", agentNames);
         
-        request.getRequestDispatcher("incomePage.jsp").forward(request, response);
+        request.getRequestDispatcher("income/incomePage.jsp").forward(request, response);
 
     }
 

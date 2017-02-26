@@ -34,7 +34,7 @@
                                     </option>
                                 </c:forEach>
                             </select> </td>
-                        <td><a href="templates/sidebar.jsp"> Add New Type </a></td>
+                        <td><a href="${pageContext.request.contextPath}/typeAddServlet"> Add New Type </a></td>
                     </tr>
                     <tr>
                         <td><p>Value: </p></td> 

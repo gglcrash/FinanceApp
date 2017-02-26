@@ -70,7 +70,7 @@ public class SpendingServlet extends HttpServlet {
         ArrayList<String> agentNames = agentService.getAgentNames();
         request.setAttribute("toList", agentNames);
 
-        request.getRequestDispatcher("spendingPage.jsp").forward(request, response);
+        request.getRequestDispatcher("spending/spendingPage.jsp").forward(request, response);
 
     }
 

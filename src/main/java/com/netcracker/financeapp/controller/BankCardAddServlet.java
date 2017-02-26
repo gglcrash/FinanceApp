@@ -5,7 +5,6 @@
  */
 package com.netcracker.financeapp.controller;
 
-import com.netcracker.financeapp.mapping.BankCard;
 import com.netcracker.financeapp.service.BankCardService;
 import com.netcracker.financeapp.service.IncomeService;
 import com.netcracker.financeapp.service.TypeService;
@@ -27,8 +26,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-@WebServlet(name = "bankCardServlet", urlPatterns = {"/bankCardServlet"})
-public class BankCardServlet extends HttpServlet {
+@WebServlet(name = "bankCardAddServlet", urlPatterns = {"/bankCardAddServlet"})
+public class BankCardAddServlet extends HttpServlet {
 
     @Autowired
     BankCardService bankCardService;
@@ -40,35 +39,35 @@ public class BankCardServlet extends HttpServlet {
             SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,
                     config.getServletContext());
         } catch (ServletException ex) {
-            Logger.getLogger(BankCardServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BankCardAddServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ArrayList<String> bankCardNumbers = bankCardService.getBankCardNumbers();
-        request.setAttribute("cardList", bankCardNumbers);
-        
-        String currentCard = request.getParameter("cardListVal");
-        if(currentCard!=null){
-            BankCard currCard = bankCardService.getBankCardByNumber(currentCard);
-            request.setAttribute("cardNumber", currCard.getCardNumber());
-            request.setAttribute("currentAmount", currCard.getAmount());
-            request.setAttribute("ownerName", currCard.getOwnerName());
-            request.setAttribute("ownerSurname", currCard.getOwnerSurname());
-            request.setAttribute("expireMonth", currCard.getExpireMonth());
-            request.setAttribute("expireYear", currCard.getExpireYear());
-            request.setAttribute("cvv", currCard.getCvv());
-        }
-        request.getRequestDispatcher("bankCard/bankCardPage.jsp").forward(request, response);
+        request.getRequestDispatcher("bankCard/bankCardAdd.jsp").forward(request, response);
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-      
+        String cardNumber = request.getParameter("cardNumber"); 
+        int amount = Integer.parseInt(request.getParameter("currentAmount")); 
+        int cvv = Integer.parseInt(request.getParameter("cvv"));
+        String ownerName = request.getParameter("ownerName");
+        String ownerSurname = request.getParameter("ownerSurname");
+        int expireMonth = Integer.parseInt(request.getParameter("expireMonth"));
+        int expireYear = Integer.parseInt(request.getParameter("expireYear"));
+        
+        int cardId = bankCardService.insertBankCard(amount, cvv, expireMonth, expireYear, cardNumber, 
+                ownerName, ownerSurname);
+        if(cardId>0){
+              request.getRequestDispatcher("templates/success.jsp").forward(request, response);
+        } else {
+           request.getRequestDispatcher("templates/error.jsp").forward(request, response); 
+        }
     }
 
 }

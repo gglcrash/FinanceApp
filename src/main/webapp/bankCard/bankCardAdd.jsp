@@ -11,7 +11,7 @@
         <table>
             <tr valign='top'><td><%@include file='/templates/sidebar.jsp'%></td>
                 <td>
-                    <form action="${pageContext.request.contextPath}/bankCardServlet" method="post">
+                    <form action="${pageContext.request.contextPath}/bankCardAddServlet" method="post">
                         <table>
                             <tr>
                                 <td><p>Card Number: </p></td> 

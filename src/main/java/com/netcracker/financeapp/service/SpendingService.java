@@ -31,7 +31,7 @@ public class SpendingService {
         return financeMapper.getFinanceListByTypeName(startDate, endDateString, typeName);
     }
     
-    public int insertSpendings(int value, String desc, Date date, int idType){
+    public int insertSpending(int value, String desc, Date date, int idType){
         return financeMapper.insertFinance(value, desc, date, idType);
     }
 }

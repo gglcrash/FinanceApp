@@ -39,7 +39,7 @@
         where name = 'SPENDING')) returning id_type;
     </select>
     
-    <select id="getSpedingTypeNames" resultType="String">
+    <select id="getSpendingTypeNames" resultType="String">
         select name from type where id_parent = (select id_type from type where name = 'SPENDING');
     </select>
 </mapper>

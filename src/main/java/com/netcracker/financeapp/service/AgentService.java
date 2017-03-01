@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Service;
 import com.netcracker.financeapp.dao.AgentMapper;
 import com.netcracker.financeapp.mapping.Agent;
+import org.apache.ibatis.annotations.Param;
 
 @Service
 public class AgentService {
@@ -29,5 +30,9 @@ public class AgentService {
 
     public int insertSpendingType(String agentName, String accountNumber){
         return agentMapper.insertAgent(agentName,accountNumber);
+    }
+    
+    public int deleteAgentByName(String agentName){
+        return agentMapper.deleteAgentByName(agentName);
     }
 }

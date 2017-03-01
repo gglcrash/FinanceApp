@@ -21,6 +21,10 @@
         insert into agent(name,account_number) values(#{agentName},#{accountNumber}) returning id_agent;
     </select>
     
+    <select id="deleteAgentByName" resultType="int">
+        delete from agent where name = #{agentName} returning id_agent;
+    </select>
+    
     
 </mapper>
 

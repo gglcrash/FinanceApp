@@ -22,11 +22,24 @@
         select card_number from bank_card;
     </select>
     
+    <select id="getAllMoney" resultType="int">
+        select amount from bank_card;
+    </select>
+    
     <select id="insertBankCard" resultType="int">
         insert into bank_card(amount,cvv,expire_month,expire_year,card_number,owner_name,owner_surname) 
-        values(#{amount},#{cvv},#{expireMonth},#{expireYear},#{cardNumber},#{owenrName},#{ownerSurname})
-        returning id-card;
+        values(#{amount},#{cvv},#{expireMonth},#{expireYear},#{cardNumber},#{ownerName},#{ownerSurname})
+        returning id_card;
     </select>
+    
+    <select id="editCardAmount" resultType="int">
+        update bank_card set amount=#{newAmount} where id_card=#{idCard} returning id_card;
+    </select>
+    
+     <select id="deleteCardByNumber" resultType="int">
+        delete from bank_card where card_number = #{cardNumber} returning id_card;
+    </select>
+    
        
 </mapper>
 

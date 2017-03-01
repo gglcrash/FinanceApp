@@ -12,6 +12,12 @@ public interface BankCardMapper {
     
     int insertBankCard(@Param("amount") int amount, @Param("cvv") int cvv, @Param("expireMonth") 
             int expireMonth, @Param("expireYear") int expireYear, @Param("cardNumber") 
-                    String cardNumber, @Param("ownerName") int ownerName, 
-                    @Param("ownerSurname") int ownerSurname);
+                    String cardNumber, @Param("ownerName") String ownerName, 
+                    @Param("ownerSurname") String ownerSurname);
+    
+    ArrayList<Integer> getAllMoney();
+    
+    int editCardAmount(@Param("idCard") int idCard, @Param("newAmount") int newAmount);
+    
+    int deleteCardByNumber(@Param("cardNumber") String cardNumber);
 }

@@ -38,9 +38,9 @@ public class TypeService {
     public ArrayList<String> getIncomeTypeNames() {
         return typeMapper.getIncomeTypeNames();
     }
-    
-    public ArrayList<String> getSpendingTypeNames() {
-        return typeMapper.getIncomeTypeNames();
+
+    public ArrayList<String> getSpendingTypeNames(){
+        return typeMapper.getSpendingTypeNames();
     }
 
     public int insertIncomeType(String typeName){

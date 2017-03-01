@@ -18,4 +18,6 @@ public interface BankCardMapper {
     ArrayList<Integer> getAllMoney();
     
     int editCardAmount(@Param("idCard") int idCard, @Param("newAmount") int newAmount);
+    
+    int deleteCardByNumber(@Param("cardNumber") String cardNumber);
 }

@@ -35,6 +35,11 @@
     <select id="editCardAmount" resultType="int">
         update bank_card set amount=#{newAmount} where id_card=#{idCard} returning id_card;
     </select>
+    
+     <select id="deleteCardByNumber" resultType="int">
+        delete from bank_card where card_number = #{cardNumber} returning id_card;
+    </select>
+    
        
 </mapper>
 

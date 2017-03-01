@@ -9,5 +9,6 @@
         <a href="${pageContext.request.contextPath}/transactionsServlet"> Transactions </a></br>
         <a href="${pageContext.request.contextPath}/incomeServlet"> Add Income </a></br>
         <a href="${pageContext.request.contextPath}/spendingServlet"> Add Spending </a></br>
+        <a href="${pageContext.request.contextPath}/agentServlet"> Agents </a></br>
     </body>
 </html>

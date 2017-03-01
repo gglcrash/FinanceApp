@@ -23,12 +23,11 @@
                                                 ${cardValue}
                                             </option>
                                         </c:forEach>
-                                            <option value="${clearCard}" selected="selected">
-                                                ${clearCard}
-                                            </option>
+                                        <option value="${clearCard}" selected="selected">
+                                            ${clearCard}
+                                        </option>
                                     </select> </td>
-                                <td> <a href="${pageContext.request.contextPath}/bankCardAddServlet"> Add New Card </a></td>
-                                </tr>
+                            </tr>
 
                             <tr>
                                 <td><p>Card Number: </p></td> 
@@ -57,6 +56,10 @@
                             <tr>
                                 <td><p>Current Amount: </p></td>
                                 <td><p>${currentAmount} </p></td>
+                            </tr>
+                            <tr>
+                                <td> <a href="${pageContext.request.contextPath}/bankCardAddServlet"> Add New Card </a></td>
+                                <td> <a href="${pageContext.request.contextPath}/bankCardDeleteServlet"> Delete Card </a></td>
                             </tr>
                         </table>
                     </form>

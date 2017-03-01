@@ -45,4 +45,8 @@ public class BankCardService {
     public int editCardAmount(int cardId, int newAmount){
         return bankCardMapper.editCardAmount(cardId, newAmount);
     }
+    
+    public int deleteCardByNumber(String cardNumber){
+        return bankCardMapper.deleteCardByNumber(cardNumber);
+    }
 }

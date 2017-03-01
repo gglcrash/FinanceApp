@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.netcracker.financeapp.controller;
+package com.netcracker.financeapp.controller.bank_card;
 
 import com.netcracker.financeapp.service.BankCardService;
 import com.netcracker.financeapp.service.IncomeService;
@@ -26,12 +26,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-@WebServlet(name = "typeAddServlet", urlPatterns = {"/typeAddServlet"})
-public class typeAddServlet extends HttpServlet {
+@WebServlet(name = "bankCardAddServlet", urlPatterns = {"/bankCardAddServlet"})
+public class BankCardAddServlet extends HttpServlet {
 
     @Autowired
-    TypeService typeService;
-
+    BankCardService bankCardService;
+    
     @Override
     public void init(ServletConfig config) {
         try {
@@ -39,38 +39,35 @@ public class typeAddServlet extends HttpServlet {
             SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,
                     config.getServletContext());
         } catch (ServletException ex) {
-            Logger.getLogger(typeAddServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BankCardAddServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("type/typeAdd.jsp").forward(request, response);
+        request.getRequestDispatcher("bankCard/bankCardAdd.jsp").forward(request, response);
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-        String typeName = request.getParameter("typeName");
-        if (request.getParameter("radios") != null) {
-            int typeId =0;
-            if(request.getParameter("radios").equals("INCOME")){
-                typeId = typeService.insertIncomeType(typeName);
-            } else if (request.getParameter("radios").equals("SPENDING")){
-                typeId = typeService.insertSpendingType(typeName);
-            }
-            
-            if (typeId > 0) {
-                request.getRequestDispatcher("templates/success.jsp").forward(request, response);
-            } else {
-                request.getRequestDispatcher("templates/error.jsp").forward(request, response);
-            }
+        String cardNumber = request.getParameter("cardNumber"); 
+        int amount = Integer.parseInt(request.getParameter("currentAmount")); 
+        int cvv = Integer.parseInt(request.getParameter("cvv"));
+        String ownerName = request.getParameter("ownerName");
+        String ownerSurname = request.getParameter("ownerSurname");
+        int expireMonth = Integer.parseInt(request.getParameter("expireMonth"));
+        int expireYear = Integer.parseInt(request.getParameter("expireYear"));
+        
+        int cardId = bankCardService.insertBankCard(amount, cvv, expireMonth, expireYear, cardNumber, 
+                ownerName, ownerSurname);
+        if(cardId>0){
+              request.getRequestDispatcher("templates/success.jsp").forward(request, response);
         } else {
-            request.getRequestDispatcher("templates/error.jsp").forward(request, response);
+           request.getRequestDispatcher("templates/error.jsp").forward(request, response); 
         }
-
     }
 
 }

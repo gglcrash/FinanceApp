@@ -11,4 +11,6 @@ public interface AgentMapper {
     ArrayList<String> getAgentNames();
     
     int insertAgent(@Param("agentName") String agentName, @Param("accountNumber") String accountNumber);
+    
+    int deleteAgentByName(@Param("agentName") String agentName);
 }

@@ -23,6 +23,10 @@ public class AgentService {
     public Agent getAgentByName(String agentName) {
         return agentMapper.getAgentByName(agentName);
     }
+    
+    public Agent getAgentById(int agentId) {
+        return agentMapper.getAgentByName(agentId);
+    }
 
     public ArrayList<String> getAgentNames() {
         return agentMapper.getAgentNames();

@@ -7,6 +7,7 @@ package com.netcracker.financeapp.dao;
 
 import com.netcracker.financeapp.mapping.Type;
 import java.util.ArrayList;
+import org.apache.ibatis.annotations.Param;
 
 public interface TypeMapper {
 
@@ -25,4 +26,6 @@ public interface TypeMapper {
     int insertIncomeType(String typeName);
     
     int insertSpendingType(String typeName);
+    
+    int deleteTypeByName(@Param("typeName") String typeName);
 }

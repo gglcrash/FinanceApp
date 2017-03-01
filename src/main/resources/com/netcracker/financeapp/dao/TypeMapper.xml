@@ -42,5 +42,9 @@
     <select id="getSpendingTypeNames" resultType="String">
         select name from type where id_parent = (select id_type from type where name = 'SPENDING');
     </select>
+    
+    <select id="deleteTypeByName" resultType="int">
+        delete from type where name = #{typeName} returning id_type;
+    </select>
 </mapper>
 

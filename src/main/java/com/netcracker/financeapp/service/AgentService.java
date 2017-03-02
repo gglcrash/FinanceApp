@@ -25,7 +25,7 @@ public class AgentService {
     }
     
     public Agent getAgentById(int agentId) {
-        return agentMapper.getAgentByName(agentId);
+        return agentMapper.getAgentById(agentId);
     }
 
     public ArrayList<String> getAgentNames() {

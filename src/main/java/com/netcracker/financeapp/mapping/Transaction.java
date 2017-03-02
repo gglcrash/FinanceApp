@@ -12,12 +12,12 @@ public class Transaction  implements java.io.Serializable {
     public Transaction() {
     }
 
-    public Transaction(int idType, int idTypeState, int idAgent, int idCard, int ifFinance) {
+    public Transaction(int idType, int idTypeState, int idAgent, int idCard, int idFinance) {
         this.idType = idType;
         this.idTypeState = idTypeState;
         this.idAgent = idAgent;
         this.idCard = idCard;
-        this.idFinance = ifFinance;
+        this.idFinance = idFinance;
     }
 
     public int getIdTransaction() {

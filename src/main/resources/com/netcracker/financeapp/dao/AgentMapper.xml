@@ -25,6 +25,8 @@
         delete from agent where name = #{agentName} returning id_agent;
     </select>
     
-    
+    <select id="getAgentById" resultMap="agentMap">
+        select * from agent where id_agent = #{idAgent};
+    </select>
 </mapper>
 

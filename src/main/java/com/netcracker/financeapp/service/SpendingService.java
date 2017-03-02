@@ -34,4 +34,8 @@ public class SpendingService {
     public int insertSpending(int value, String desc, Date date, int idType){
         return financeMapper.insertFinance(value, desc, date, idType);
     }
+    
+    public Finance getFinanceById(int idFinance){
+        return financeMapper.getFinanceById(idFinance);
+    }
 }

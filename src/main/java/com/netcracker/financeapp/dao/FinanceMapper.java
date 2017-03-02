@@ -28,4 +28,5 @@ public interface FinanceMapper {
 
     ArrayList<Finance> getAllSpendings(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 
+    Finance getFinanceById(@Param("idFinance") int idFinance);
 }

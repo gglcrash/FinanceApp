@@ -11,6 +11,10 @@ public class TransactionObject  implements java.io.Serializable {
      private String bankCardNumber;
      private Date financeDate;
 
+     public TransactionObject(){
+         
+     }
+     
     public TransactionObject(Type type, Type typeState,Type typeFinance, Agent agent, BankCard bankCard , Finance finance) {
        transactionTypeName = type.getName();
        financeTypeName=typeFinance.getName();

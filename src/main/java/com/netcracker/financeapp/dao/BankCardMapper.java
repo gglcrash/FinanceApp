@@ -20,4 +20,6 @@ public interface BankCardMapper {
     int editCardAmount(@Param("idCard") int idCard, @Param("newAmount") int newAmount);
     
     int deleteCardByNumber(@Param("cardNumber") String cardNumber);
+    
+    BankCard getBankCardById(@Param("idCard") int idCard);
 }

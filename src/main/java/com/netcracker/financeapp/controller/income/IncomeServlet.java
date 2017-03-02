@@ -5,10 +5,12 @@
  */
 package com.netcracker.financeapp.controller.income;
 
+import com.netcracker.financeapp.mapping.Agent;
 import com.netcracker.financeapp.mapping.BankCard;
 import com.netcracker.financeapp.service.AgentService;
 import com.netcracker.financeapp.service.BankCardService;
 import com.netcracker.financeapp.service.IncomeService;
+import com.netcracker.financeapp.service.TransactionService;
 import com.netcracker.financeapp.service.TypeService;
 import java.io.IOException;
 import java.util.Date;
@@ -43,6 +45,8 @@ public class IncomeServlet extends HttpServlet {
     BankCardService bankCardService;
     @Autowired
     AgentService agentService;
+    @Autowired
+    TransactionService transactionService;
 
     @Override
     public void init(ServletConfig config) {
@@ -87,8 +91,11 @@ public class IncomeServlet extends HttpServlet {
         String typeName = request.getParameter("incomeType");
 
         int typeId = typeService.getTypeByName(typeName).getIdType();
+        int transactionTypeId = typeService.getTypeByName(typeName).getIdParent();
+        int stateTypeId = typeService.getTypeByName("COMMITED").getIdType();
         
         String from = request.getParameter("fromListVal");
+        Agent currentAgent = agentService.getAgentByName(from);
         String to = request.getParameter("toListVal");
         BankCard currentBankCard = bankCardService.getBankCardByNumber(to);
         bankCardService.editCardAmount(currentBankCard.getIdCard(), currentBankCard.getAmount()+value);
@@ -97,8 +104,11 @@ public class IncomeServlet extends HttpServlet {
         
         //INSERT TRANSACTION HERE
         
+        
         if (incomeId > 0) {
             request.getRequestDispatcher("templates/success.jsp").forward(request, response);
+            transactionService.insertTransaction(transactionTypeId, stateTypeId, 
+                currentAgent.getIdAgent(), currentBankCard.getIdCard(), incomeId);
         } else {
            request.getRequestDispatcher("templates/error.jsp").forward(request, response); 
         }

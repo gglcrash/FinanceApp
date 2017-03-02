@@ -40,6 +40,8 @@
         delete from bank_card where card_number = #{cardNumber} returning id_card;
     </select>
     
-       
+    <select id="getBankCardById" resultMap="bankCardMap">
+        select * from bank_card where id_card = #{idCard};
+    </select>
 </mapper>
 

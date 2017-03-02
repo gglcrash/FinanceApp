@@ -5,11 +5,13 @@
  */
 package com.netcracker.financeapp.controller.spending;
 
+import com.netcracker.financeapp.mapping.Agent;
 import com.netcracker.financeapp.mapping.BankCard;
 import com.netcracker.financeapp.service.AgentService;
 import com.netcracker.financeapp.service.BankCardService;
 import com.netcracker.financeapp.service.IncomeService;
 import com.netcracker.financeapp.service.SpendingService;
+import com.netcracker.financeapp.service.TransactionService;
 import com.netcracker.financeapp.service.TypeService;
 import java.io.IOException;
 import java.util.Date;
@@ -45,6 +47,8 @@ public class SpendingServlet extends HttpServlet {
     BankCardService bankCardService;
     @Autowired
     AgentService agentService;
+    @Autowired
+    TransactionService transactionService;
 
     @Override
     public void init(ServletConfig config) {
@@ -85,6 +89,7 @@ public class SpendingServlet extends HttpServlet {
         BankCard currentBankCard = bankCardService.getBankCardByNumber(from);
         if (currentBankCard.getAmount() > value) {
             bankCardService.editCardAmount(currentBankCard.getIdCard(), currentBankCard.getAmount() - value);
+            Agent currentAgent = agentService.getAgentByName(to);
 
             Date date = null;
             try {
@@ -97,10 +102,15 @@ public class SpendingServlet extends HttpServlet {
             String typeName = request.getParameter("spendingType");
 
             int typeId = typeService.getTypeByName(typeName).getIdType();
+            int transactionTypeId = typeService.getTypeByName(typeName).getIdParent();
+            int stateTypeId = typeService.getTypeByName("COMMITED").getIdType();
 
             int spendingId = spendingService.insertSpending(value, description, date, typeId);
             if (spendingId > 0) {
                 request.getRequestDispatcher("templates/success.jsp").forward(request, response);
+                transactionService.insertTransaction(transactionTypeId, stateTypeId,
+                        currentAgent.getIdAgent(), currentBankCard.getIdCard(), spendingId);
+
             } else {
                 request.getRequestDispatcher("templates/error.jsp").forward(request, response);
             }

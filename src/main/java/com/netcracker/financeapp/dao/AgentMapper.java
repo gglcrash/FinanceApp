@@ -8,6 +8,8 @@ public interface AgentMapper {
 
     Agent getAgentByName(String agentName);
     
+    Agent getAgentById(int agentId);
+    
     ArrayList<String> getAgentNames();
     
     int insertAgent(@Param("agentName") String agentName, @Param("accountNumber") String accountNumber);

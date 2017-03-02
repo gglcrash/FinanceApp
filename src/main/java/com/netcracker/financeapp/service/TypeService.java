@@ -50,4 +50,8 @@ public class TypeService {
     public int insertSpendingType(String typeName){
         return typeMapper.insertSpendingType(typeName);
     }
+    
+    public int deleteTypeByName(String typeName){
+        return typeMapper.deleteTypeByName(typeName);
+    }
 }

@@ -3,9 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.netcracker.financeapp.controller.bank_card;
+package com.netcracker.financeapp.controller.type;
 
+import com.netcracker.financeapp.controller.agent.*;
+import com.netcracker.financeapp.mapping.Agent;
 import com.netcracker.financeapp.mapping.BankCard;
+import com.netcracker.financeapp.service.AgentService;
 import com.netcracker.financeapp.service.BankCardService;
 import com.netcracker.financeapp.service.IncomeService;
 import com.netcracker.financeapp.service.TypeService;
@@ -27,11 +30,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-@WebServlet(name = "bankCardServlet", urlPatterns = {"/bankCardServlet"})
-public class BankCardServlet extends HttpServlet {
+@WebServlet(name = "typeDeleteServlet", urlPatterns = {"/typeDeleteServlet"})
+public class TypeDeleteServlet extends HttpServlet {
 
     @Autowired
-    BankCardService bankCardService;
+    TypeService typeService;
 
     @Override
     public void init(ServletConfig config) {
@@ -40,37 +43,31 @@ public class BankCardServlet extends HttpServlet {
             SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,
                     config.getServletContext());
         } catch (ServletException ex) {
-            Logger.getLogger(BankCardServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TypeDeleteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ArrayList<String> bankCardNumbers = bankCardService.getBankCardNumbers();
-        request.setAttribute("cardList", bankCardNumbers);
-
-        String currentCard = request.getParameter("cardListVal");
-        if (currentCard != null && currentCard != "Select Card") {
-
-            BankCard currCard = bankCardService.getBankCardByNumber(currentCard);
-            request.setAttribute("cardNumber", currCard.getCardNumber());
-            request.setAttribute("currentAmount", currCard.getAmount());
-            request.setAttribute("ownerName", currCard.getOwnerName());
-            request.setAttribute("ownerSurname", currCard.getOwnerSurname());
-            request.setAttribute("expireMonth", currCard.getExpireMonth());
-            request.setAttribute("expireYear", currCard.getExpireYear());
-            request.setAttribute("cvv", currCard.getCvv());
-        }
-        request.setAttribute("clearCard", "Select Card");
-        request.getRequestDispatcher("bankCard/bankCardPage.jsp").forward(request, response);
+        ArrayList<String> typeList = typeService.getIncomeTypeNames();
+        typeList.addAll(typeService.getSpendingTypeNames());
+        request.setAttribute("typeList", typeList);
+        
+        request.setAttribute("clearType", "Select Type");
+        request.getRequestDispatcher("type/typeDelete.jsp").forward(request, response);
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-
+        int deleted_id = typeService.deleteTypeByName(request.getParameter("typeListVal"));
+        if (deleted_id > 0) {
+            request.getRequestDispatcher("templates/success.jsp").forward(request, response);
+        } else {
+           request.getRequestDispatcher("templates/error.jsp").forward(request, response); 
+        }
     }
 
 }

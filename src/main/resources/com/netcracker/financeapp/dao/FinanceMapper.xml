@@ -46,4 +46,7 @@
         #{date}, #{idType}) returning id_finance;
     </select>
     
+    <select id="getFinanceById" resultMap="financeMap">
+        select * from finance where id_finance = #{idFinance};
+    </select>
 </mapper>

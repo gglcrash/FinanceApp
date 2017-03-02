@@ -42,11 +42,15 @@ public class BankCardService {
         return allMoney;
     }
     
-    public int editCardAmount(int cardId, int newAmount){
-        return bankCardMapper.editCardAmount(cardId, newAmount);
+    public int editCardAmount(int idCard, int newAmount){
+        return bankCardMapper.editCardAmount(idCard, newAmount);
     }
     
     public int deleteCardByNumber(String cardNumber){
         return bankCardMapper.deleteCardByNumber(cardNumber);
+    }
+    
+    public BankCard getBankCardById(int idCard){
+        return bankCardMapper.getBankCardById(idCard);
     }
 }

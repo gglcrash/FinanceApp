@@ -5,20 +5,9 @@
  */
 package com.netcracker.financeapp.controller.type;
 
-import com.netcracker.financeapp.controller.agent.*;
-import com.netcracker.financeapp.mapping.Agent;
-import com.netcracker.financeapp.mapping.BankCard;
-import com.netcracker.financeapp.service.AgentService;
-import com.netcracker.financeapp.service.BankCardService;
-import com.netcracker.financeapp.service.IncomeService;
 import com.netcracker.financeapp.service.TypeService;
 import java.io.IOException;
-import java.util.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletConfig;

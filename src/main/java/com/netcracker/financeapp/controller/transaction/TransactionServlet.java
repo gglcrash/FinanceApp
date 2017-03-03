@@ -5,7 +5,7 @@
  */
 package com.netcracker.financeapp.controller.transaction;
 
-import com.netcracker.financeapp.controller.income.*;
+import com.netcracker.financeapp.enums.FINANCE_TYPE;
 import com.netcracker.financeapp.mapping.Agent;
 import com.netcracker.financeapp.mapping.BankCard;
 import com.netcracker.financeapp.mapping.Finance;
@@ -19,13 +19,8 @@ import com.netcracker.financeapp.service.SpendingService;
 import com.netcracker.financeapp.service.TransactionService;
 import com.netcracker.financeapp.service.TypeService;
 import java.io.IOException;
-import java.util.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletConfig;
@@ -37,10 +32,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-/**
- *
- * @author gglcrash
- */
 @WebServlet(name = "transactionServlet", urlPatterns = {"/transactionServlet"})
 public class TransactionServlet extends HttpServlet {
 
@@ -73,14 +64,14 @@ public class TransactionServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String currentOption = request.getParameter("optionListVal");
-        ArrayList<TransactionObject> transList = emptyList();
+        ArrayList<TransactionObject> transList = null;
         if (currentOption != null) {
             switch (currentOption) {
                 case "Select all incomes":
-                    transList = getAllFinance("INCOME");
+                    transList = getAllFinance(FINANCE_TYPE.INCOME);
                     break;
                 case "Select all spendings":
-                    transList = getAllFinance("SPENDING");
+                    transList = getAllFinance(FINANCE_TYPE.SPENDING);
                     break;
             }
         }
@@ -98,8 +89,8 @@ public class TransactionServlet extends HttpServlet {
 
     }
 
-    public ArrayList<TransactionObject> getAllFinance(String typeName) {
-        int idTypeTmp = typeService.getTypeByName(typeName).getIdType();
+    public ArrayList<TransactionObject> getAllFinance(FINANCE_TYPE typeName) {
+        int idTypeTmp = typeService.getTypeByName(typeName.toString()).getIdType();
         ArrayList<Transaction> transactionList = transactionService.getTransactionsByIdType(idTypeTmp);
 
         ArrayList<TransactionObject> transList = new ArrayList<>();
@@ -114,11 +105,11 @@ public class TransactionServlet extends HttpServlet {
             Type type = typeService.getTypeById(idType);
             Type typeState = typeService.getTypeById(idTypeState);
             Finance finance = null;
-            switch (type.getName()) {
-                case "INCOME":
+            switch (typeName) {
+                case INCOME:
                     finance = incomeService.getFinanceById(idFinance);
                     break;
-                case "SPENDING":
+                case SPENDING:
                     finance = spendingService.getFinanceById(idFinance);
                     break;
             }
@@ -128,18 +119,6 @@ public class TransactionServlet extends HttpServlet {
 
             transList.add(new TransactionObject(type, typeState, typeFinance, agent, bankCard, finance));
         }
-        return transList;
-    }
-
-    public ArrayList<TransactionObject> emptyList() {
-        ArrayList<TransactionObject> transList = new ArrayList();
-        TransactionObject transObject = new TransactionObject();
-        transObject.setAgentName("-");
-        transObject.setBankCardNumber("-");
-        transObject.setFinanceDate(new GregorianCalendar(0000, 0, 0).getTime());
-        transObject.setFinanceTypeName("-");
-        transObject.setFinanceValue(0);
-        transObject.setTransactionTypeName("-");
         return transList;
     }
 

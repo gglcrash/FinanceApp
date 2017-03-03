@@ -18,7 +18,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletConfig;
@@ -30,10 +29,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-/**
- *
- * @author gglcrash
- */
 @WebServlet(name = "incomeServlet", urlPatterns = {"/incomeServlet"})
 public class IncomeServlet extends HttpServlet {
 
@@ -89,22 +84,19 @@ public class IncomeServlet extends HttpServlet {
         }
         String description = request.getParameter("description");
         String typeName = request.getParameter("incomeType");
-
         int typeId = typeService.getTypeByName(typeName).getIdType();
+        
         int transactionTypeId = typeService.getTypeByName(typeName).getIdParent();
         int stateTypeId = typeService.getTypeByName("COMMITED").getIdType();
         
         String from = request.getParameter("fromListVal");
         Agent currentAgent = agentService.getAgentByName(from);
+        
         String to = request.getParameter("toListVal");
         BankCard currentBankCard = bankCardService.getBankCardByNumber(to);
         bankCardService.editCardAmount(currentBankCard.getIdCard(), currentBankCard.getAmount()+value);
 
         int incomeId = incomeService.insertIncome(value, description, date, typeId);
-        
-        //INSERT TRANSACTION HERE
-        
-        
         if (incomeId > 0) {
             request.getRequestDispatcher("templates/success.jsp").forward(request, response);
             transactionService.insertTransaction(transactionTypeId, stateTypeId, 

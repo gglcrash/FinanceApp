@@ -9,7 +9,6 @@ import com.netcracker.financeapp.mapping.Agent;
 import com.netcracker.financeapp.mapping.BankCard;
 import com.netcracker.financeapp.service.AgentService;
 import com.netcracker.financeapp.service.BankCardService;
-import com.netcracker.financeapp.service.IncomeService;
 import com.netcracker.financeapp.service.SpendingService;
 import com.netcracker.financeapp.service.TransactionService;
 import com.netcracker.financeapp.service.TypeService;
@@ -19,11 +18,9 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,10 +29,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-/**
- *
- * @author gglcrash
- */
+
 @WebServlet(name = "spendingServlet", urlPatterns = {"/spendingServlet"})
 public class SpendingServlet extends HttpServlet {
 
@@ -85,10 +79,11 @@ public class SpendingServlet extends HttpServlet {
         int value = Integer.parseInt(request.getParameter("value"));
 
         String from = request.getParameter("fromListVal");
-        String to = request.getParameter("toListVal");
         BankCard currentBankCard = bankCardService.getBankCardByNumber(from);
         if (currentBankCard.getAmount() > value) {
             bankCardService.editCardAmount(currentBankCard.getIdCard(), currentBankCard.getAmount() - value);
+            
+            String to = request.getParameter("toListVal");
             Agent currentAgent = agentService.getAgentByName(to);
 
             Date date = null;
@@ -98,6 +93,7 @@ public class SpendingServlet extends HttpServlet {
             } catch (ParseException ex) {
                 Logger.getLogger(SpendingServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
             String description = request.getParameter("description");
             String typeName = request.getParameter("spendingType");
 

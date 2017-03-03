@@ -1,0 +1,55 @@
+create table type(
+id_type serial primary key,
+name varchar(100) unique,
+id_parent int,
+constraint fk_id_parent foreign key (id_parent) references type(id_type)
+);
+
+insert into type(name,id_parent) values('INCOME',null);
+insert into type(name,id_parent) values('SPENDING',null);
+insert into type(name,id_parent) values('STATE',null);
+insert into type(name,id_parent) values('ACTIVE',(select id_type from type where name = 'STATE'));
+insert into type(name,id_parent) values('ABORTED',(select id_type from type where name = 'STATE'));
+insert into type(name,id_parent) values('COMMITED',(select id_type from type where name = 'STATE'));
+
+
+create table finance(
+id_finance serial primary key,
+value int,
+description varchar(100),
+date timestamp,
+id_type int,
+constraint fk_id_type foreign key (id_type) references type(id_type)
+);
+
+create table bank_card(
+id_card serial primary key,
+amount int,
+cvv int,
+card_number varchar(100) unique,
+owner_name varchar(100),
+owner_surname varchar(100),
+expire_month int,
+expire_year int
+);
+
+create table agent(
+id_agent serial primary key,
+name varchar(100),
+account_number varchar(100)
+);
+
+create table transaction(
+id_transaction serial primary key,
+id_type int,
+id_type_state int,
+id_agent int,
+id_card int,
+id_finance int,
+constraint fk_id_type foreign key (id_type) references type(id_type),
+constraint fk_id_type_state foreign key (id_type_state) references type(id_type),
+constraint fk_id_agent foreign key (id_agent) references agent(id_agent),
+constraint fk_id_card foreign key (id_card) references bank_card(id_card),
+constraint fk_id_finance foreign key (id_finance) references finance(id_finance)
+);
+
